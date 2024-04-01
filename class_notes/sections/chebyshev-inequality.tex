@@ -1,0 +1,30 @@
+\section{Chevyshev Inequality}
+
+Given a random variable $X$ with mean $\mu$ and variance $\sigma^2$, then:
+
+\begin{align*}
+\prob{|X - \mu| \geq t} \leq \frac{\sigma^2}{t^2}, \quad \forall t > 0
+\end{align*}
+
+\begin{proof}
+We are going to use the fact that a strictly increasing function of a random variable does not change the probability of an event. Let $Y = (|X - \mu|)^2$. Then,
+
+\begin{align*}
+\prob{|X - \mu| \geq t} &= \prob{Y \geq t^2} \\
+\end{align*}
+
+Using Markov's inequality, we have:
+
+\begin{align*}
+\prob{Y \geq t^2} &\leq \frac{\E{Y}}{t^2} \\
+\end{align*}
+
+Given a random variable $Z$, the variance of $Z$ is $\var{Z} = \E{(Z - \E{Z})^2}$. Therefore,
+
+\begin{align*}
+\prob{(X - \mu)^2 \geq t^2} &\leq \frac{\E{(X - \mu)^2}}{t^2} \\
+\prob{(X - \mu)^2 \geq t^2} &\leq \frac{\var{X}}{t^2} \\
+\prob{(X - \mu)^2 \geq t^2} &\leq \frac{\sigma^2}{t^2} \\
+\end{align*}
+
+\end{proof}

@@ -1,0 +1,658 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{buckley2017effect}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=78361a723c858a24e9476486c22163a1}{%
+           family={Buckley},
+           familyi={B\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4b318df74add4336f85f2033690a200e}{%
+           family={O'Brien},
+           familyi={O\bibinitperiod},
+           given={Fergal},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{bc6c410249546d7fc2e57aa2c98bc788}
+      \strng{fullhash}{bc6c410249546d7fc2e57aa2c98bc788}
+      \strng{bibnamehash}{bc6c410249546d7fc2e57aa2c98bc788}
+      \strng{authorbibnamehash}{bc6c410249546d7fc2e57aa2c98bc788}
+      \strng{authornamehash}{bc6c410249546d7fc2e57aa2c98bc788}
+      \strng{authorfullhash}{bc6c410249546d7fc2e57aa2c98bc788}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Information Systems Frontiers}
+      \field{title}{The effect of malicious manipulations on prediction market accuracy}
+      \field{volume}{19}
+      \field{year}{2017}
+      \field{pages}{611\bibrangedash 623}
+      \range{pages}{13}
+    \endentry
+    \entry{choo2022manipulation}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=7cfb20ed759e00329666f7e716dd14ab}{%
+           family={Choo},
+           familyi={C\bibinitperiod},
+           given={Lawrence},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1736f7e4b946922360bc0cf472ef53cc}{%
+           family={Kaplan},
+           familyi={K\bibinitperiod},
+           given={Todd\bibnamedelima R},
+           giveni={T\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=034e4f4389b5356d5189f780cf935f89}{%
+           family={Zultan},
+           familyi={Z\bibinitperiod},
+           given={Roi},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {INFORMS}%
+      }
+      \strng{namehash}{43f7cabbe663c0bdfd290223e86a20ee}
+      \strng{fullhash}{418e9769246ebaafa18b752c8a4f3add}
+      \strng{bibnamehash}{418e9769246ebaafa18b752c8a4f3add}
+      \strng{authorbibnamehash}{418e9769246ebaafa18b752c8a4f3add}
+      \strng{authornamehash}{43f7cabbe663c0bdfd290223e86a20ee}
+      \strng{authorfullhash}{418e9769246ebaafa18b752c8a4f3add}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Management Science}
+      \field{number}{9}
+      \field{title}{Manipulation and (mis) trust in prediction markets}
+      \field{volume}{68}
+      \field{year}{2022}
+      \field{pages}{6716\bibrangedash 6732}
+      \range{pages}{17}
+    \endentry
+    \entry{deck2013affecting}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=8eaf91764d5ef17ace2f0423cb80c766}{%
+           family={Deck},
+           familyi={D\bibinitperiod},
+           given={Cary},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7bb4632dd29924c6c197c1b1c02cd5c4}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Shengle},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4e96b92a69875b44dd7dcabbbb5fb64c}{%
+           family={Porter},
+           familyi={P\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{7d8064054414135a9272e699bdd1f215}
+      \strng{fullhash}{ebe5d8cf1d37f3caf68c909e4b2a52ef}
+      \strng{bibnamehash}{ebe5d8cf1d37f3caf68c909e4b2a52ef}
+      \strng{authorbibnamehash}{ebe5d8cf1d37f3caf68c909e4b2a52ef}
+      \strng{authornamehash}{7d8064054414135a9272e699bdd1f215}
+      \strng{authorfullhash}{ebe5d8cf1d37f3caf68c909e4b2a52ef}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Economic Behavior and Organization}
+      \field{title}{Affecting policy by manipulating prediction markets: Experimental evidence}
+      \field{volume}{85}
+      \field{year}{2013}
+      \field{pages}{48\bibrangedash 62}
+      \range{pages}{15}
+    \endentry
+    \entry{HANSON2006449}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=59865618950cdda143b545d178ad5832}{%
+           family={Hanson},
+           familyi={H\bibinitperiod},
+           given={Robin},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f8cb1c8eef86ea4ba55d2f6789cbfd54}{%
+           family={Oprea},
+           familyi={O\bibinitperiod},
+           given={Ryan},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4e96b92a69875b44dd7dcabbbb5fb64c}{%
+           family={Porter},
+           familyi={P\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b7a2a1b27b33e651754809ae72d8353f}
+      \strng{fullhash}{d1a557fdb614d721f8b97c0eeaca338f}
+      \strng{bibnamehash}{d1a557fdb614d721f8b97c0eeaca338f}
+      \strng{authorbibnamehash}{d1a557fdb614d721f8b97c0eeaca338f}
+      \strng{authornamehash}{b7a2a1b27b33e651754809ae72d8353f}
+      \strng{authorfullhash}{d1a557fdb614d721f8b97c0eeaca338f}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0167-2681}
+      \field{journaltitle}{Journal of Economic Behavior and Organization}
+      \field{number}{4}
+      \field{title}{Information aggregation and manipulation in an experimental market}
+      \field{volume}{60}
+      \field{year}{2006}
+      \field{pages}{449\bibrangedash 459}
+      \range{pages}{11}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.jebo.2004.09.011
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0167268105001575
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0167268105001575
+      \endverb
+    \endentry
+    \entry{HassanAmmar2023Fttt}{article}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=21d35a520119029dcb8f6af63142aea8}{%
+           family={Hassan},
+           familyi={H\bibinitperiod},
+           given={Ammar},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8245416d434b1297e9999d3bb8cdc77b}{%
+           family={Makhdoom},
+           familyi={M\bibinitperiod},
+           given={Imran},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0664aba4d6f9510dfc715503ff1e668d}{%
+           family={Iqbal},
+           familyi={I\bibinitperiod},
+           given={Waseem},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6b7549ae9fa3b1c777f5ef0a93051bf2}{%
+           family={Ahmad},
+           familyi={A\bibinitperiod},
+           given={Awais},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fc48002cb227365b34f1f0d139e82a78}{%
+           family={Raza},
+           familyi={R\bibinitperiod},
+           given={Asad},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {LONDON}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier Ltd}%
+      }
+      \strng{namehash}{ef7fbf2ce4329fba33a486dcf5d2f26d}
+      \strng{fullhash}{9f5726298b9ffb4bec284fe8c6f47822}
+      \strng{bibnamehash}{9f5726298b9ffb4bec284fe8c6f47822}
+      \strng{authorbibnamehash}{9f5726298b9ffb4bec284fe8c6f47822}
+      \strng{authornamehash}{ef7fbf2ce4329fba33a486dcf5d2f26d}
+      \strng{authorfullhash}{9f5726298b9ffb4bec284fe8c6f47822}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1084-8045}
+      \field{journaltitle}{Journal of network and computer applications}
+      \field{title}{From trust to truth: Advancements in mitigating the Blockchain Oracle problem}
+      \field{volume}{217}
+      \field{year}{2023}
+      \field{pages}{103672\bibrangedash}
+      \range{pages}{-1}
+      \keyw{Blockchain Oracle problem ; Computer Science ; Computer Science,Hardware & Architecture ; Computer Science,Interdisciplinary Applications ; Computer Science,Software Engineering ; Decentralized applications ; Decentralized Oracles ; Science & Technology ; Smart contracts ; Technology ; Trust models}
+    \endentry
+    \entry{Hayes}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3ff27c77a5cb752753b2f7cb615b038b}{%
+           family={Hayes},
+           familyi={H\bibinitperiod},
+           given={Adam},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Investopedia}%
+      }
+      \strng{namehash}{3ff27c77a5cb752753b2f7cb615b038b}
+      \strng{fullhash}{3ff27c77a5cb752753b2f7cb615b038b}
+      \strng{bibnamehash}{3ff27c77a5cb752753b2f7cb615b038b}
+      \strng{authorbibnamehash}{3ff27c77a5cb752753b2f7cb615b038b}
+      \strng{authornamehash}{3ff27c77a5cb752753b2f7cb615b038b}
+      \strng{authorfullhash}{3ff27c77a5cb752753b2f7cb615b038b}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Investopedia}
+      \field{title}{Winner-takes-all market: Definition, examples, economic impact}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.investopedia.com/terms/w/winner-takes-all-market.asp
+      \endverb
+      \verb{url}
+      \verb https://www.investopedia.com/terms/w/winner-takes-all-market.asp
+      \endverb
+    \endentry
+    \entry{kapp2023improved}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=02a93294e7d535f39ee61e4ab865c4a4}{%
+           family={Kapp-Schwoerer},
+           familyi={K\bibinithyphendelim S\bibinitperiod},
+           given={Lukas},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{02a93294e7d535f39ee61e4ab865c4a4}
+      \strng{fullhash}{02a93294e7d535f39ee61e4ab865c4a4}
+      \strng{bibnamehash}{02a93294e7d535f39ee61e4ab865c4a4}
+      \strng{authorbibnamehash}{02a93294e7d535f39ee61e4ab865c4a4}
+      \strng{authornamehash}{02a93294e7d535f39ee61e4ab865c4a4}
+      \strng{authorfullhash}{02a93294e7d535f39ee61e4ab865c4a4}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Improved Liquidity for Prediction Markets}
+      \field{year}{2023}
+    \endentry
+    \entry{PolymarketLearn}{misc}{}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2023-12-06}
+      \field{title}{Learn - Polymarket}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://learn.polymarket.com/
+      \endverb
+      \verb{url}
+      \verb https://learn.polymarket.com/
+      \endverb
+    \endentry
+    \entry{luckner2008arbitrage}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=76494cb261c22080c84881dd40401726}{%
+           family={Luckner},
+           familyi={L\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7048b85732b313dd0160d5e7d52a855a}{%
+           family={Weinhardt},
+           familyi={W\bibinitperiod},
+           given={Christof},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{0b02d091da0e18a49c6ebb5b07a294fd}
+      \strng{fullhash}{0b02d091da0e18a49c6ebb5b07a294fd}
+      \strng{bibnamehash}{0b02d091da0e18a49c6ebb5b07a294fd}
+      \strng{authorbibnamehash}{0b02d091da0e18a49c6ebb5b07a294fd}
+      \strng{authornamehash}{0b02d091da0e18a49c6ebb5b07a294fd}
+      \strng{authorfullhash}{0b02d091da0e18a49c6ebb5b07a294fd}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{2008 10th IEEE Conference on E-Commerce Technology and the Fifth IEEE Conference on Enterprise Computing, E-Commerce and E-Services}
+      \field{title}{Arbitrage opportunities and market-making traders in prediction markets}
+      \field{year}{2008}
+      \field{pages}{53\bibrangedash 59}
+      \range{pages}{7}
+    \endentry
+    \entry{alma9919406254106531}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=b66d967f1b4d160ab2af5d4fb46fbd31}{%
+           family={Makarov},
+           familyi={M\bibinitperiod},
+           given={Igor.},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6fef22905d62024d45fe52823eb2c78d}{%
+           family={Schoar},
+           familyi={S\bibinitperiod},
+           given={Antoinette.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {Cambridge, Mass}%
+      }
+      \list{publisher}{1}{%
+        {National Bureau of Economic Research}%
+      }
+      \strng{namehash}{785a5108f23d07c3b3a4b1916e3d9b57}
+      \strng{fullhash}{785a5108f23d07c3b3a4b1916e3d9b57}
+      \strng{bibnamehash}{785a5108f23d07c3b3a4b1916e3d9b57}
+      \strng{authorbibnamehash}{785a5108f23d07c3b3a4b1916e3d9b57}
+      \strng{authornamehash}{785a5108f23d07c3b3a4b1916e3d9b57}
+      \strng{authorfullhash}{785a5108f23d07c3b3a4b1916e3d9b57}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Cryptocurrencies and Decentralized Finance (DeFi)}
+      \field{series}{NBER working paper series no. w30006}
+      \field{title}{Cryptocurrencies and Decentralized Finance (DeFi) / Igor Makarov, Antoinette Schoar.}
+      \field{year}{2022}
+      \keyw{General Financial Markets}
+    \endentry
+    \entry{PetersonJack2020Aado}{article}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=e63feb25e5d06d08101bd0c66b8d2afd}{%
+           family={Peterson},
+           familyi={P\bibinitperiod},
+           given={Jack},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=58428668ac20cdd646475cfedbf1a133}{%
+           family={Krug},
+           familyi={K\bibinitperiod},
+           given={Joseph},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b3f3ff7530b8aabe8347b19a69d7fb6f}{%
+           family={Zoltu},
+           familyi={Z\bibinitperiod},
+           given={Micah},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8ffc33d5666d9e0afc0979a8272adfa0}{%
+           family={Williams},
+           familyi={W\bibinitperiod},
+           given={Austin\bibnamedelima K},
+           giveni={A\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e63c39a03a32a8c92fd786c5997754a1}{%
+           family={Alexander},
+           familyi={A\bibinitperiod},
+           given={Stephanie},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {Ithaca}%
+      }
+      \list{publisher}{1}{%
+        {Cornell University Library, arXiv.org}%
+      }
+      \strng{namehash}{0e6a18c3bb690d17b093cb9e57dde320}
+      \strng{fullhash}{9b9bedf6c4c5f07f283d480db9ff43e0}
+      \strng{bibnamehash}{9b9bedf6c4c5f07f283d480db9ff43e0}
+      \strng{authorbibnamehash}{9b9bedf6c4c5f07f283d480db9ff43e0}
+      \strng{authornamehash}{0e6a18c3bb690d17b093cb9e57dde320}
+      \strng{authorfullhash}{9b9bedf6c4c5f07f283d480db9ff43e0}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2331-8422}
+      \field{journaltitle}{arXiv.org}
+      \field{title}{Augur: a decentralized oracle and prediction market platform}
+      \field{year}{2020}
+      \true{nocite}
+      \keyw{Computer Science - Cryptography and Security ; Markets ; Prediction markets ; Reputations}
+    \endentry
+    \entry{Polack}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=947a07d263c0a0f3e11e9b03e7f5cc79}{%
+           family={Polack},
+           familyi={P\bibinitperiod},
+           given={Jackson},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{947a07d263c0a0f3e11e9b03e7f5cc79}
+      \strng{fullhash}{947a07d263c0a0f3e11e9b03e7f5cc79}
+      \strng{bibnamehash}{947a07d263c0a0f3e11e9b03e7f5cc79}
+      \strng{authorbibnamehash}{947a07d263c0a0f3e11e9b03e7f5cc79}
+      \strng{authornamehash}{947a07d263c0a0f3e11e9b03e7f5cc79}
+      \strng{authorfullhash}{947a07d263c0a0f3e11e9b03e7f5cc79}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Manifold}
+      \field{title}{Manifold, polymarket, and metaculus all have the same question with the same criteria. which probability do you believe?}
+      \verb{urlraw}
+      \verb https://manifold.markets/jacksonpolack/manifold-polymarket-and-metaculus-a
+      \endverb
+      \verb{url}
+      \verb https://manifold.markets/jacksonpolack/manifold-polymarket-and-metaculus-a
+      \endverb
+    \endentry
+    \entry{roose2022wager}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=037398d2bbeb1d0726d6d94a2e969100}{%
+           family={Roose},
+           familyi={R\bibinitperiod},
+           given={Kevin},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{037398d2bbeb1d0726d6d94a2e969100}
+      \strng{fullhash}{037398d2bbeb1d0726d6d94a2e969100}
+      \strng{bibnamehash}{037398d2bbeb1d0726d6d94a2e969100}
+      \strng{authorbibnamehash}{037398d2bbeb1d0726d6d94a2e969100}
+      \strng{authornamehash}{037398d2bbeb1d0726d6d94a2e969100}
+      \strng{authorfullhash}{037398d2bbeb1d0726d6d94a2e969100}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The New York Times}
+      \field{month}{10}
+      \field{title}{The Wager That Betting Can Change the World}
+      \field{year}{2022}
+      \verb{urlraw}
+      \verb https://www.nytimes.com/2022/10/08/technology/prediction-markets-manifold-manifest.html
+      \endverb
+      \verb{url}
+      \verb https://www.nytimes.com/2022/10/08/technology/prediction-markets-manifold-manifest.html
+      \endverb
+    \endentry
+    \entry{wolfers2004prediction}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=22e89001d0a128a8b110c57c90e2c403}{%
+           family={Wolfers},
+           familyi={W\bibinitperiod},
+           given={Justin},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0f1c14c51805234cfffd43e45d1db562}{%
+           family={Zitzewitz},
+           familyi={Z\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {American Economic Association}%
+      }
+      \strng{namehash}{92d76738fff41fcbae09cbef48a40b63}
+      \strng{fullhash}{92d76738fff41fcbae09cbef48a40b63}
+      \strng{bibnamehash}{92d76738fff41fcbae09cbef48a40b63}
+      \strng{authorbibnamehash}{92d76738fff41fcbae09cbef48a40b63}
+      \strng{authornamehash}{92d76738fff41fcbae09cbef48a40b63}
+      \strng{authorfullhash}{92d76738fff41fcbae09cbef48a40b63}
+      \field{extraname}{1}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of economic perspectives}
+      \field{number}{2}
+      \field{title}{Prediction markets}
+      \field{volume}{18}
+      \field{year}{2004}
+      \field{pages}{107\bibrangedash 126}
+      \range{pages}{20}
+    \endentry
+    \entry{wolfers2006five}{misc}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=22e89001d0a128a8b110c57c90e2c403}{%
+           family={Wolfers},
+           familyi={W\bibinitperiod},
+           given={Justin},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0f1c14c51805234cfffd43e45d1db562}{%
+           family={Zitzewitz},
+           familyi={Z\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {National Bureau of Economic Research Cambridge, Mass., USA}%
+      }
+      \strng{namehash}{92d76738fff41fcbae09cbef48a40b63}
+      \strng{fullhash}{92d76738fff41fcbae09cbef48a40b63}
+      \strng{bibnamehash}{92d76738fff41fcbae09cbef48a40b63}
+      \strng{authorbibnamehash}{92d76738fff41fcbae09cbef48a40b63}
+      \strng{authornamehash}{92d76738fff41fcbae09cbef48a40b63}
+      \strng{authorfullhash}{92d76738fff41fcbae09cbef48a40b63}
+      \field{extraname}{2}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Five open questions about prediction markets}
+      \field{year}{2006}
+      \true{nocite}
+    \endentry
+    \entry{Zitzewitz2004}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0f1c14c51805234cfffd43e45d1db562}{%
+           family={Zitzewitz},
+           familyi={Z\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {American Economic Association}%
+      }
+      \strng{namehash}{0f1c14c51805234cfffd43e45d1db562}
+      \strng{fullhash}{0f1c14c51805234cfffd43e45d1db562}
+      \strng{bibnamehash}{0f1c14c51805234cfffd43e45d1db562}
+      \strng{authorbibnamehash}{0f1c14c51805234cfffd43e45d1db562}
+      \strng{authornamehash}{0f1c14c51805234cfffd43e45d1db562}
+      \strng{authorfullhash}{0f1c14c51805234cfffd43e45d1db562}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of economic perspectives}
+      \field{number}{2}
+      \field{title}{Prediction markets}
+      \field{volume}{18}
+      \field{year}{2004}
+      \field{pages}{107\bibrangedash 126}
+      \range{pages}{20}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

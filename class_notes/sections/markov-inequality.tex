@@ -1,0 +1,38 @@
+\section{Markov Inequality}
+
+Being $X$ a random variable such that $X \geq 0$, then:
+
+\begin{equation*}
+\prob{X \geq t} \leq \frac{\E{X}}{t}, \quad \forall t > 0
+\end{equation*}
+
+\begin{proof}
+Whe can rewrite the left-hand side of the inequality using the indicator function:
+
+\begin{align*}
+X \geq X \indicator{X \geq t}
+\end{align*}
+
+The left-hand side would be greater when $X < t$ and equal when $X \geq t$. Given that:
+
+\begin{align*}
+X \geq X \indicator{X \geq t} \geq t \indicator{X \geq t}
+\end{align*}
+
+In this case, $X \indicator{X \geq t} > t \indicator{X \geq t}$ when $X > t$, and $X \indicator{X \geq t} = t \indicator{X \geq t}$ when $X \leq t$ because $X = t$ or the indicator function is zero.
+
+Taking the expectation of the inequality:
+
+\begin{align*}
+\E{X} &\geq \E{X \indicator{X \geq t}} \geq \E{t \indicator{X \geq t}} \\
+\E{X} &\geq \E{X \indicator{X \geq t}} \geq t \E{\indicator{X \geq t}} \\
+\frac{\E{X}}{t} &\geq \frac{\E{X \indicator{X \geq t}}}{t} \geq \E{\indicator{X \geq t}} \\
+\end{align*}
+
+But $\E{\indicator{X \geq t}} = \prob{X \geq t}$, so:
+
+\begin{align*}
+\frac{\E{X}}{t} &\geq \prob{X \geq t} \\
+\end{align*}
+
+\end{proof}

@@ -1,0 +1,41 @@
+\section{Weak Law of Large Numbers}
+
+Given a collection of i.i.d. random variables $\{X_i\}_{i=1}^n$, with mean $\mu$ and variance $\sigma^2$.
+
+Defining $\bar{X}_n = \frac{1}{n} \sum_{i=1}^n X_i$, the weak law of large numbers states that for any $\epsilon > 0$,
+
+\begin{align*}
+\lim_{n \to \infty} \prob{|\bar{X}_n - \mu| \geq \epsilon} = 0
+\end{align*}
+
+or equivalently,
+
+\begin{align*}
+\bar{X}_n \convP \mu
+\end{align*}
+
+\begin{proof}
+Calculating the variance of $\bar{X}_n$,
+
+\begin{align*}
+\var{\bar{X}_n} &= \var{\frac{1}{n} \sum_{i=1}^n X_i} \\
+&= \frac{1}{n^2} \sum_{i=1}^n \var{X_i} \\
+&= \frac{1}{n^2} \cdot n \sigma^2 \\
+&= \frac{\sigma^2}{n}
+\end{align*}
+
+Then, by Chebyshev's inequality,
+
+\begin{align*}
+\prob{|\bar{X}_n - \mu| \geq \epsilon} &\leq \frac{\var{\bar{X}_n}}{\epsilon^2} \\
+&= \frac{\sigma^2}{n \epsilon^2}
+\end{align*}
+
+Taking the limit as $n \to \infty$,
+
+\begin{align*}
+\lim_{n \to \infty} \prob{|\bar{X}_n - \mu| \geq \epsilon} &\leq \lim_{n \to \infty} \frac{\sigma^2}{n \epsilon^2} \\
+\lim_{n \to \infty} \prob{|\bar{X}_n - \mu| \geq \epsilon} &\leq 0
+\end{align*}
+
+\end{proof}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2024.3.15)  1 APR 2024 14:31
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2024.3.15)  1 APR 2024 20:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1032,20 +1032,20 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )) (./sections/chebyshev-inequality.tex [1
 
-]) (./sections/weak-law-large-numbers.tex [2]) [3] (./paper.aux)
+]) (./sections/weak-law-large-numbers.tex [2]) (./sections/hoeffding-inequality.tex [3] [4] [5]) [6] (./paper.aux)
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 4B0BE657FE1598DD23700D760543516D;457.
+(rerunfilecheck)             Checksum: E5CFB2AF7F09645C6897A85A944FF059;633.
 Package logreq Info: Writing requests to 'paper.run.xml'.
 \openout1 = `paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 30600 strings out of 476191
- 574220 string characters out of 5812072
- 1373210 words of memory out of 5000000
- 50858 multiletter control sequences out of 15000+600000
- 472301 words of font info for 47 fonts, out of 8000000 for 9000
+ 30637 strings out of 476191
+ 574863 string characters out of 5812072
+ 1374407 words of memory out of 5000000
+ 50877 multiletter control sequences out of 15000+600000
+ 476046 words of font info for 64 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  83i,15n,85p,784b,801s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on paper.pdf (3 pages).
+Output written on paper.pdf (6 pages).

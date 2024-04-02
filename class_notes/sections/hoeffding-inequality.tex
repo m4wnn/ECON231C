@@ -47,7 +47,7 @@ by the union bound. Now, we can write:
 \prob{|\bar{Z}_n| \geq t} &\leq \prob{\sum_{i=1}^n Z_i \geq nt} + \prob{\sum_{i=1}^n Z_i \leq -nt}\\
 \end{align*}
 
-for any $\lambda > 0$, we can write \footnote{Given that $f(x) = \lambda x$ is a monotonically increasing function when $\lambda > 0$}:
+for any $\lambda > 0$, we have \footnote{Given that $f(x) = \lambda x$ is a monotonically increasing function when $\lambda > 0$}:
 
 \begin{align*}
 \prob{|\bar{Z}_n| \geq t} &\leq \prob{\lambda \sum_{i=1}^n Z_i \geq \lambda nt} + \prob{\lambda \sum_{i=1}^n Z_i \leq -\lambda nt}\\
@@ -88,7 +88,7 @@ Applying the Hoeffding's lemma \footnote{
     \frac{ 2 \prod_{i = 1}^n \exp\left(\frac{\lambda^2a^2}{2}\right)}{\exp(\lambda nt)} 
 \end{align*}
 
-simplifying the above expression, we get:
+simplifying the above expression:
 
 \begin{align*}
 \prob{|\bar{Z}_n| \geq t} &\leq
@@ -110,7 +110,7 @@ Calculating the F.O.C. with respect to $\lambda$, we get:
 n a^2 \lambda^* - nt = 0 \Rightarrow \lambda^* = \frac{t}{a^2}
 \end{align*}
 
-Substituting $\lambda^*$ back into the inequality, we get:
+Substituting $\lambda^*$ back into the inequality:
 
 \begin{align*}
 \prob{|\bar{Z}_n| \geq t} &\leq
@@ -123,7 +123,7 @@ Substituting $\lambda^*$ back into the inequality, we get:
     2 \exp\left(-\frac{nt^2}{2a^2} \right)\\
 \end{align*}
 
-replacing $\bar{Z}_n$ by $\bar{X}_n - \mu$, we get:
+replacing $\bar{Z}_n$ by $\bar{X}_n - \mu$:
 
 \begin{align*}
 \prob{|\bar{X}_n - \mu| \geq t} \leq 2 \exp\left(-\frac{nt^2}{2 a^2}\right)

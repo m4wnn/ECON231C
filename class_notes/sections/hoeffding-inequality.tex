@@ -1,0 +1,132 @@
+\section{Hoeffding's Inequality}
+
+If $\{X_i\}_{i=1}^n$ is a random sample from a distribution with mean $\mu$ such that, for a number \footnote{In the field of statistics, it is common to consider bounded random variables, which naturally leads to the assumption that all moments exist. However, in econometrics, it's often more pragmatic to soften this assumption, focusing instead on the existence of only a select subset of moments. This approach allows for greater flexibility in dealing with real-world data, where the behavior of economic variables can't always be neatly bounded, and full moment conditions may not hold.} $a > 0$, we have:
+
+\begin{equation*}
+|X_i - \mu| \leq a, \quad \forall i = 1, 2, \ldots, n
+\end{equation*}
+
+Then, for any $t > 0$, the following inequality holds:
+
+\begin{equation*}
+\prob{|\bar{X}_n - \mu| \geq t} \leq 2 \exp\left(-\frac{nt^2}{2 a^2}\right)
+\end{equation*}
+
+where $\bar{X}_n = \frac{1}{n} \sum_{i=1}^n X_i$ is the sample mean.
+
+\begin{proof}
+Lets define $Z_i = X_i - \mu, \forall i = 1, 2, \dots, n$. Then, we have:
+
+\begin{align*}
+\bar{Z}_n = \frac{1}{n} \sum_{i=1}^n Z_i = \bar{X}_n - \mu
+\end{align*}
+
+and,
+
+\begin{align*}
+|Z_i| \leq a, \forall i = 1, 2, \dots , n
+\end{align*}
+
+Consider the events:
+
+\begin{align*}
+A &= \{\bar{Z}_n \geq t\}\\
+B &= \{\bar{Z}_n \leq -t\}
+\end{align*}
+
+then, the probability of a event $C = \{|\bar{Z}_n| \geq t\}$, can be written as:
+
+\begin{align*}
+\prob{C} &= \prob{A \cup B} \leq \prob{A} + \prob{B} \\
+\end{align*}
+
+by the union bound. Now, we can write:
+
+\begin{align*}
+\prob{|\bar{Z}_n| \geq t} &\leq \prob{\bar{Z}_n \geq t} + \prob{\bar{Z}_n \leq -t}\\
+\prob{|\bar{Z}_n| \geq t} &\leq \prob{\sum_{i=1}^n Z_i \geq nt} + \prob{\sum_{i=1}^n Z_i \leq -nt}\\
+\end{align*}
+
+for any $\lambda > 0$, we can write \footnote{Given that $f(x) = \lambda x$ is a monotonically increasing function when $\lambda > 0$}:
+
+\begin{align*}
+\prob{|\bar{Z}_n| \geq t} &\leq \prob{\lambda \sum_{i=1}^n Z_i \geq \lambda nt} + \prob{\lambda \sum_{i=1}^n Z_i \leq -\lambda nt}\\
+\end{align*}
+
+and, by Markov's inequality:
+
+\begin{align*}
+\prob{|\bar{Z}_n| \geq t} &\leq
+    \frac{\E{\exp(\lambda \sum_{i=1}^n Z_i)}}{\exp(\lambda nt)} + 
+    \frac{\E{\exp(-\lambda \sum_{i=1}^n Z_i)}}{\exp(-\lambda nt)}\\
+\end{align*}
+
+since $Z_i$ are independent and identically distributed, we can write:
+
+\begin{align*}
+\prob{|\bar{Z}_n| \geq t} &\leq
+    \frac{\prod_{i=1}^n \E{\exp(\lambda Z_i)}}{\exp(\lambda nt)} + 
+    \frac{\prod_{i=1}^n \E{\exp(-\lambda Z_i)}}{\exp(-\lambda nt)}\\
+%%%%%
+\prob{|\bar{Z}_n| \geq t} &\leq
+    \frac{\prod_{i=1}^n \E{\exp(\lambda Z_i)}}{\exp(\lambda nt)} + 
+    \frac{\prod_{i=1}^n \exp(-1)\E{\exp(\lambda Z_i)}}{\exp(-\lambda nt)}\\
+%%%%%
+\prob{|\bar{Z}_n| \geq t} &\leq
+    \frac{2 \prod_{i=1}^n \E{\exp(\lambda Z_i)}}{\exp(\lambda nt)} 
+\end{align*}
+
+Applying the Hoeffding's lemma \footnote{
+    If $X$ is a random variable such that $X \leq a$, then for any $\lambda > 0$, we have:
+    \begin{align*}
+    \E{\exp(\lambda X)} \leq \exp\left(\frac{\lambda^2a^2}{2}\right)
+    \end{align*}
+} to the above expression, we have:
+
+\begin{align*}
+\prob{|\bar{Z}_n| \geq t} &\leq
+    \frac{ 2 \prod_{i = 1}^n \exp\left(\frac{\lambda^2a^2}{2}\right)}{\exp(\lambda nt)} 
+\end{align*}
+
+simplifying the above expression, we get:
+
+\begin{align*}
+\prob{|\bar{Z}_n| \geq t} &\leq
+    \frac{2 \exp\left(\frac{n\lambda^2a^2}{2}\right)}{\exp(\lambda nt)}\\
+%%%%%
+\prob{|\bar{Z}_n| \geq t} &\leq
+    2 \exp\left(\frac{n\lambda^2a^2}{2} - \lambda nt \right)\\
+\end{align*}
+
+Because the above inequality holds for any $\lambda > 0$, we can optimize the right-hand side with respect to $\lambda$.
+
+\begin{align*}
+\lambda^* = \argmin_{\lambda > 0} \left\{ \frac{n\lambda^2a^2}{2} - \lambda nt \right\}
+\end{align*}
+
+Calculating the F.O.C. with respect to $\lambda$, we get:
+
+\begin{align*}
+n a^2 \lambda^* - nt = 0 \Rightarrow \lambda^* = \frac{t}{a^2}
+\end{align*}
+
+Substituting $\lambda^*$ back into the inequality, we get:
+
+\begin{align*}
+\prob{|\bar{Z}_n| \geq t} &\leq
+    2 \exp\left(\frac{n\left(\frac{t}{a^2}\right)^2a^2}{2} - \frac{t}{a^2} n t \right)\\
+%%%%%
+\prob{|\bar{Z}_n| \geq t} &\leq
+    2 \exp\left(\frac{nt^2}{2a^2} - \frac{nt^2}{a^2} \right)\\
+%%%%%
+\prob{|\bar{Z}_n| \geq t} &\leq
+    2 \exp\left(-\frac{nt^2}{2a^2} \right)\\
+\end{align*}
+
+replacing $\bar{Z}_n$ by $\bar{X}_n - \mu$, we get:
+
+\begin{align*}
+\prob{|\bar{X}_n - \mu| \geq t} \leq 2 \exp\left(-\frac{nt^2}{2 a^2}\right)
+\end{align*}
+
+\end{proof}

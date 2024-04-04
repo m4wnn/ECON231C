@@ -1,0 +1,41 @@
+\section{Big O Notation}
+\label{sec:big-O}
+
+The \emph{Big O} notation in statistics deals with the convergence of sets of random variables, where convergence is in the sense of convergence in probability. The notation is used to describe the rate of convergence of a sequence of random variables to a limit.
+
+For a set of random variables $X_n$, and a corresponding set of constants $a_n$ (both indexed by $n$), the notation:
+
+\begin{align*}
+    X_n = O_p(a_n), \quad \text{as} \quad n \to \infty
+\end{align*}
+
+means that the set of values $\frac{X_n}{a_n}$ is stochastically bounded, That means:
+
+\begin{align*}
+\forall \varepsilon > 0, 
+\exists M \in (0, \infty),
+\exists N_{\varepsilon} \in (0, \infty): 
+    \forall n > N_{\varepsilon} \left(
+        n > N_{\varepsilon} \implies \prob{
+            \left|
+                \frac{X_n}{a_n}
+            \right| > M
+        } < \varepsilon
+    \right)
+\end{align*}
+
+equivalently, we can rewrite the above expression as:
+
+\begin{align*}
+\forall \varepsilon > 0, 
+\exists \delta_{\varepsilon} \in (0, \infty),
+\exists N_{\varepsilon} \in (0, \infty): 
+    \forall n > N_{\varepsilon} \left(
+        n > N_{\varepsilon} \implies \prob{
+            \left|
+                X_n
+            \right| > \delta_{\varepsilon}
+        } < \varepsilon
+    \right)
+\end{align*}
+

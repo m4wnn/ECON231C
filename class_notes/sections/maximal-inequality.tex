@@ -33,3 +33,103 @@ $
 represent the deviation of the sample mean of the $j$-th component from the population mean of the $j$-th component.
 
 The maximal inequality is a generalization of the weak law of large numbers, and it is used to bound the probability of the maximum deviation of the sample mean from the population mean.
+
+
+\begin{proof}
+
+Applying the union bound, we have:
+
+\begin{align*}
+\prob{
+    \max_{1 \leq j \leq p}{
+        \left|
+            \frac{1}{n} \sum_{i=1}^{n} X_{i,j} - \mu_{j}
+        \right|
+    }
+    \geq
+    a \sqrt{2} \sqrt{
+        \dfrac{\ln p + \ln \frac{2}{\varepsilon}}{n}
+    }
+}
+\leq
+\sum_{j=1}^{p} \prob{
+    \left|
+        \frac{1}{n} \sum_{i=1}^{n} X_{i,j} - \mu_{j}
+    \right|
+    \geq
+    a \sqrt{2} \sqrt{
+        \dfrac{\ln p + \ln \frac{2}{\varepsilon}}{n}
+    }
+}
+\end{align*}
+
+By the Hoeffding's inequality, we have:
+
+\begin{align*}
+\sum_{j=1}^{p} \prob{
+    \left|
+        \frac{1}{n} \sum_{i=1}^{n} X_{i,j} - \mu_{j}
+    \right|
+    \geq
+    a \sqrt{2} \sqrt{
+        \dfrac{\ln p + \ln \frac{2}{\varepsilon}}{n}
+    }
+}
+\leq
+\sum_{j=1}^{p} 2 \exp{\left(
+    - \ln p + \ln \frac{2}{\varepsilon}
+\right)}
+\end{align*}
+
+Simplifying the expression, we have:
+
+\begin{align*}
+\prob{
+    \max_{1 \leq j \leq p}{
+        \left|
+            \frac{1}{n} \sum_{i=1}^{n} X_{i,j} - \mu_{j}
+        \right|
+    }
+    \geq
+    a \sqrt{2} \sqrt{
+        \dfrac{\ln p + \ln \frac{2}{\varepsilon}}{n}
+    }
+}
+&\leq
+\sum_{j = 1}^{p} 2 \Exp{- \ln p} \Exp{- \ln \frac{2}{\varepsilon}} \\
+%%%%%%%%%%
+&\leq
+\sum_{j = 1}^{p} 2 \Exp{\ln \frac{1}{p}} \Exp{\ln \frac{\varepsilon}{2}} \\
+%%%%%%%%%%
+&\leq
+\dfrac{2 p \varepsilon}{ 2 p}
+\end{align*}
+
+\begin{align*}
+\prob{
+    \max_{1 \leq j \leq p}{
+        \left|
+            \frac{1}{n} \sum_{i=1}^{n} X_{i,j} - \mu_{j}
+        \right|
+    }
+    \geq
+    a \sqrt{2} \sqrt{
+        \dfrac{\ln p + \ln \frac{2}{\varepsilon}}{n}
+    }
+}
+\leq \varepsilon 
+\end{align*}
+
+\end{proof}
+
+Whe have proved that the rate of convergence of the maximal inequality is $\sqrt{\ln p / n}$, or in big-O notation:
+
+\begin{align*}
+\max_{1 \leq j \leq p}{
+    \left|
+        \frac{1}{n} \sum_{i=1}^{n} X_{i,j} - \mu_{j}
+    \right|
+} = O_p \left(
+    \sqrt{\dfrac{\ln p}{n}}
+\right)
+\end{align*}

@@ -1,4 +1,4 @@
-\section{High-Dimensional Regression}
+\section{High-Dimensional Linear Regression}
 
 Consider the regression: 
 
@@ -88,8 +88,10 @@ then:
 Given the linear regression in matrix form:
 
 \begin{align*}
-    \Vec{Y} = \Mat{X}\beta + \epsilon
+    \Vec{Y} = \Mat{X}\beta + \varepsilon
 \end{align*}
+
+Where $\Vec{Y} = (Y_1, \cdots, Y_n)'$ and $\varepsilon = (\epsilon_1, \cdots, \epsilon_n)'$ are $n \times 1$ column vectors; $\beta = (\beta_1, \cdots, \beta_p)'$ is a $p \times 1$ column vector; and $\Mat{X} = (\Vec{X}_1, \cdots, \Vec{X}_n)'$ is a $n \times p$ matrix.
 
 Recall that the OLS linear estimator is given by:
 
@@ -100,9 +102,9 @@ Recall that the OLS linear estimator is given by:
 Substituting the linear regression in matrix form into the OLS linear estimator we get:
 
 \begin{align*}
-    \hat{\beta}^{OLS} &= (\Mat{X}'\Mat{X})^{-1}\Mat{X}'(\Mat{X}\beta + \epsilon) \\
-    \hat{\beta}^{OLS} - \beta &= (\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon \\
-    \Mat{X}(\hat{\beta}^{OLS} - \beta) &= \Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon \\
+    \hat{\beta}^{OLS} &= (\Mat{X}'\Mat{X})^{-1}\Mat{X}'(\Mat{X}\beta + \varepsilon) \\
+    \hat{\beta}^{OLS} - \beta &= (\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon \\
+    \Mat{X}(\hat{\beta}^{OLS} - \beta) &= \Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon \\
 \end{align*}
 
 Where: 
@@ -125,10 +127,10 @@ Therefore, the expected value of the mean squared error for the OLS estimator is
     \Vec{e}'\Vec{e}
 }\\
 &= \frac{1}{n} \E{
-    (\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon)'(\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon)
+    (\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon)'(\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon)
 }\\
 &= \frac{1}{n} \E{
-    \epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon
+    \varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon
 }\\
 \end{align*}
 \begin{align}
@@ -139,7 +141,7 @@ Therefore, the expected value of the mean squared error for the OLS estimator is
     \right)^2
 }
 &= \frac{1}{n} \E{
-    \epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon
+    \varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon
 }
 \label{eq:expected-value-mse}
 \end{align}
@@ -156,10 +158,10 @@ The expected value in equation \ref{eq:expected-value-mse} is an scalar, therefo
 
 \begin{align*}
 \frac{1}{n} \E{
-    \epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon
+    \varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon
 }
 &= \frac{1}{n} \tr{\E{
-    \epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon
+    \varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon
 }}
 \end{align*}
 
@@ -167,16 +169,16 @@ Because the trace and the expected value are linear operators, we interchange th
 
 \begin{align*}
 \frac{1}{n} \E{
-    \epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon
+    \varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon
 }
 &= \frac{1}{n} \E{\tr{
-    \epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon
+    \varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon
 }} \\
 &= \frac{1}{n} \E{\tr{
-    \epsilon\epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
+    \varepsilon\varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
 }}\\
 &= \frac{1}{n} \tr{\E{
-    \epsilon\epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
+    \varepsilon\varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
 }}
 \end{align*}
 
@@ -184,13 +186,13 @@ By the law of iterated expectations:
 
 \begin{align*}
 \frac{1}{n} \E{
-    \epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon
+    \varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon
 }
 &= \frac{1}{n} \tr{\E{\E{
-    \epsilon\epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
+    \varepsilon\varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
  | \Mat{X}} }}\\
 &= \frac{1}{n} \tr{\E{\E{
-    \epsilon\epsilon'| \Mat{X}} \Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'}}\\
+    \varepsilon\varepsilon'| \Mat{X}} \Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'}}\\
 &= \frac{1}{n} \tr{
         \E{
             \sigma^2 \Mat{I}_n
@@ -222,7 +224,7 @@ By the law of iterated expectations:
 
 \begin{align*}
 \frac{1}{n} \E{
-    \epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon
+    \varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon
 }
 &= \frac{p\sigma^2}{n}\\
 \end{align*}

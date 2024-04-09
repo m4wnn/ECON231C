@@ -60,3 +60,173 @@ We are interested in case where $p$ is large, meaning that: $p \sim n$, $p > n$ 
         From the previous lemma, we know that $\Mat{X}'\Mat{X}$ is degenerated when $p > n$. Therefore, $\Mat{X}'\Mat{X}$ is not invertible, and the OLS linear estimator does not exist.
     \end{proof}
 \end{claim*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Expected Value of the OLS linear Regression Estimator when $p > n$}
+
+Assuming that the linear model is homoscedastic, that is: 
+
+\begin{align*}
+    \E{\epsilon^2 | \Vec{X}} = \sigma^2
+\end{align*}
+
+then: 
+
+\begin{align*}
+\E{
+    \frac{1}{n}
+    \sum_{i=1}^{n} \left(\Vec{X}_i' 
+        (\hat{\beta}^{OLS} - \beta)
+    \right)^2
+}
+=
+\dfrac{p \sigma^2}{n}
+\end{align*}
+
+\begin{proof}
+
+Given the linear regression in matrix form:
+
+\begin{align*}
+    \Vec{Y} = \Mat{X}\beta + \epsilon
+\end{align*}
+
+Recall that the OLS linear estimator is given by:
+
+\begin{align*}
+    \hat{\beta}^{OLS} = (\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{Y}
+\end{align*}
+
+Substituting the linear regression in matrix form into the OLS linear estimator we get:
+
+\begin{align*}
+    \hat{\beta}^{OLS} &= (\Mat{X}'\Mat{X})^{-1}\Mat{X}'(\Mat{X}\beta + \epsilon) \\
+    \hat{\beta}^{OLS} - \beta &= (\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon \\
+    \Mat{X}(\hat{\beta}^{OLS} - \beta) &= \Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon \\
+\end{align*}
+
+Where: 
+
+\begin{align*}
+    \Vec{e} = \widehat{\Vec{Y}} - \E{\Vec{Y} | X} = \Mat{X}(\hat{\beta}^{OLS} - \beta) 
+\end{align*}
+
+Therefore, the expected value of the mean squared error for the OLS estimator is:
+
+\begin{align*}
+\E{
+    \frac{1}{n}
+    \sum_{i=1}^{n} \left(\Vec{X}_i' 
+        (\hat{\beta}^{OLS} - \beta)
+    \right)^2
+}
+&=
+\frac{1}{n} \E{
+    \Vec{e}'\Vec{e}
+}\\
+&= \frac{1}{n} \E{
+    (\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon)'(\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon)
+}\\
+&= \frac{1}{n} \E{
+    \epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon
+}\\
+\end{align*}
+\begin{align}
+\E{
+    \frac{1}{n}
+    \sum_{i=1}^{n} \left(\Vec{X}_i' 
+        (\hat{\beta}^{OLS} - \beta)
+    \right)^2
+}
+&= \frac{1}{n} \E{
+    \epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon
+}
+\label{eq:expected-value-mse}
+\end{align}
+
+\begin{lemma*}
+    If $\Mat{A}$ is a $n \times p$ matrix, and $\Mat{B}$  is a $p \times n$ matrix, then:
+
+    \begin{align*}
+        \tr{AB} = \tr{BA}
+    \end{align*}
+\end{lemma*}
+
+The expected value in equation \ref{eq:expected-value-mse} is an scalar, therefore:
+
+\begin{align*}
+\frac{1}{n} \E{
+    \epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon
+}
+&= \frac{1}{n} \tr{\E{
+    \epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon
+}}
+\end{align*}
+
+Because the trace and the expected value are linear operators, we interchange the order of the trace and the expected value:
+
+\begin{align*}
+\frac{1}{n} \E{
+    \epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon
+}
+&= \frac{1}{n} \E{\tr{
+    \epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon
+}} \\
+&= \frac{1}{n} \E{\tr{
+    \epsilon\epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
+}}\\
+&= \frac{1}{n} \tr{\E{
+    \epsilon\epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
+}}
+\end{align*}
+
+By the law of iterated expectations:
+
+\begin{align*}
+\frac{1}{n} \E{
+    \epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon
+}
+&= \frac{1}{n} \tr{\E{\E{
+    \epsilon\epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
+ | \Mat{X}} }}\\
+&= \frac{1}{n} \tr{\E{\E{
+    \epsilon\epsilon'| \Mat{X}} \Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'}}\\
+&= \frac{1}{n} \tr{
+        \E{
+            \sigma^2 \Mat{I}_n
+            \Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
+        }
+    }\\
+&= \frac{\sigma^2}{n} \tr{
+        \E{
+            \Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
+        }
+    }\\
+&= \frac{\sigma^2}{n} \E{
+        \tr{
+            \Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
+        }
+    }\\
+&= \frac{\sigma^2}{n} \E{
+        \tr{
+            \Mat{X}'\Mat{X}(\Mat{X}'\Mat{X})^{-1}
+        }
+    }\\
+&= \frac{\sigma^2}{n} \E{
+        \tr{
+           \Mat{I}_p 
+        }
+    }\\
+&= \frac{\sigma^2}{n} \E{p}\\
+\end{align*}
+
+\begin{align*}
+\frac{1}{n} \E{
+    \epsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\epsilon
+}
+&= \frac{p\sigma^2}{n}\\
+\end{align*}
+
+\end{proof}
+
+Meaning that the expected value of the mean squared error of the OLS linear estimator does not converge to zero when $p >> n$.

@@ -1,0 +1,40 @@
+\section{Norms}
+\label{sec:norms}
+
+\begin{def*}
+A norm on a metric vector space \(V\) over a field \(F\) (usually \(\mathbb{R}\) or \(\mathbb{C}\)) is a function \(\|\cdot\|: V \rightarrow [0, \infty)\) that satisfies the following properties for all vectors \(u, v \in V\) and all scalars \(\alpha \in F\):
+\begin{enumerate}
+    \item \(\|v\| = 0\) if and only if \(v = 0\).
+    \item \(\|\alpha v\| = |\alpha| \|v\|\) (Absolute scalability).
+    \item \(\|u + v\| \leq \|u\| + \|v\|\) (Triangle inequality).
+\end{enumerate}
+\end{def*}
+
+Some common norms include:
+
+\begin{itemize}
+    \item \textbf{Zero norm} (or \(l_0\) norm):
+    \begin{align*}
+        \|v\|_0 = \sum_{i=1}^n \indicator{v_i \neq 0}
+    \end{align*}
+
+    \item \textbf{Manhattan norm} (or \(l_1\) norm):
+    \begin{align*}
+        \|v\|_1 = \sum_{i=1}^n |v_i|
+    \end{align*}
+
+    \item \textbf{Euclidean norm} (or \(l_2\) norm):
+    \begin{align*}
+        \|v\|_2 = \sqrt{\sum_{i=1}^n |v_i|^2}
+    \end{align*}
+    
+    \item \textbf{General \(l_p\) norm}:
+    \begin{align*}
+        \|v\|_p = \left(\sum_{i=1}^n |v_i|^p\right)^{1/p}
+    \end{align*}
+
+    \item \textbf{Maximum norm} (or \(l_\infty\) norm):
+    \begin{align*}
+        \|v\|_\infty = \max_{i=1}^n |v_i|
+    \end{align*}
+\end{itemize}

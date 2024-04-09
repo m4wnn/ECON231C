@@ -1,0 +1,62 @@
+\section{High-Dimensional Regression}
+
+Consider the regression: 
+
+\begin{align*}
+    Y = \Vec{X}'\beta + \epsilon
+\end{align*}
+
+Where $Y$ is a scalar, $\Vec{X}$ is a $p$-dimensional vector of regressors, $\beta$ is a $p$-dimensional vector of coefficients, and $\epsilon$ is a scalar error term. And suppose we have a random sample:
+
+\begin{align*}
+    (\Vec{X}_1, Y_1), \cdots, (\Vec{X}_n, Y_n) \sim \text{i.i.d.} (\Vec{X}, Y)
+\end{align*}
+
+We are interested in case where $p$ is large, meaning that: $p \sim n$, $p > n$ or $p >> n$.
+
+\begin{claim*}
+    \emph{OLS} linear estimator does not exist when $p > n$.
+
+    \begin{proof}
+        The OLS linear regression estimator is given by:
+
+        \begin{align*}
+            \hat{\beta} = (\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{Y}
+        \end{align*}
+
+        Where $\Mat{X} = (\Vec{X_1}, \cdots, \Vec{X_n})'$ is the $n \times p$ design matrix, and $\Vec{Y} = (Y_1, \cdots, Y_n)'$ is the $n \times 1$ vector of dependent variables. 
+
+        \begin{lemma*}
+            If $\Mat{A}$ is degenerated, then $\Mat{A}^{-1}$ does not exist.
+
+            \begin{def*}
+            A matrix $\Mat{A}$ is degenerated if there exists a non-zero vector $\Vec{v}$ such that $\Mat{A}\Vec{v} = \Vec{0}$.
+            \end{def*}
+
+            \begin{proof}
+                Asume that $\Mat{A}$ is invertible, then there exist $\Mat{A}\Mat{A}^{-1} = \Mat{I}_p$. If $\Mat{A}$ is degenerated, then there exists a non-zero vector $\Vec{v}$ such that $\Mat{A}\Vec{v} = \Vec{0}$. Multiplying both sides by $\Mat{A}^{-1}$ we get:
+
+                \begin{align*}
+                    \Mat{A}^{-1}\Mat{A}\Vec{v} = \Mat{A}^{-1}\Vec{0} \implies \Vec{v} = \Vec{0}
+                \end{align*}
+
+                Which is a contradiction. Therefore, $\Mat{A}$ is not invertible.
+            \end{proof}
+        \end{lemma*}
+
+        \begin{lemma*}
+            The matrix $\Mat{A} = \Mat{X}'\Mat{X}$ is degenerated when $p > n$.
+
+            \begin{proof}
+                Consider the linear system of equations:
+                \begin{align*}
+                \Mat{X}\Vec{b} = \Vec{0}, \quad \Vec{b} \in \mathbb{R}^p
+                \end{align*}
+
+                Where $\Mat{X}$ is a $n \times p$ matrix. This system has a non unique solution when $p > n$. therefore, there existe a non-zero vector $\Vec{b}$ such that $\Mat{X}\Vec{b} = \Vec{0}$, meaning that $\Mat{X}'\Mat{X}$ is degenerated.
+            \end{proof}
+        \end{lemma*}
+
+        From the previous lemma, we know that $\Mat{X}'\Mat{X}$ is degenerated when $p > n$. Therefore, $\Mat{X}'\Mat{X}$ is not invertible, and the OLS linear estimator does not exist.
+    \end{proof}
+\end{claim*}

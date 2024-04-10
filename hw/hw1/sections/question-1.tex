@@ -1,0 +1,85 @@
+\section*{Problem 1}
+%%%%% PROBLEM STATEMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{myanswerbox}
+Prove Hoeffding's lemma: for any mean-zero random variable \(Z\) satisfying \(|Z| \leq a\) almost surely,
+\[ 
+    \E{\Exp{\lambda Z_i}} \leq \exp\left(\frac{\lambda^2 a^2}{2}\right), 
+\]
+for all \(\lambda > 0\).
+\end{myanswerbox}
+%%%%% QUESTION SEPARATOR %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Answer %%%%%
+\begin{proof}
+Since $\Exp{\lambda Z_i}$ is a convex function of $Z_i$, for all $z_i \in [-a, a]$,
+
+\begin{align*}
+\Exp{\lambda z_i}
+&\leq 
+\dfrac{a - z_i}{a - (-a)} \Exp{ -a \lambda} + 
+\dfrac{z_i - (-a)}{a - (-a)} \Exp{a \lambda} \\
+%%%
+&\leq 
+\dfrac{a - z_i}{2a} \Exp{ -a \lambda} + 
+\dfrac{z_i + a}{2a} \Exp{a \lambda} \\
+\end{align*}
+
+taking expectation on both sides and knowing that $Z$ is mean-zero, we have,
+
+
+\begin{align*}
+\E{\Exp{\lambda Z_i}}
+&\leq 
+\E{\dfrac{a - Z_i}{2a} \Exp{ -a \lambda}} + 
+\E{\dfrac{Z_i + a}{2a} \Exp{a \lambda}} \\
+%%%
+&\leq 
+\dfrac{a - \E{Z_i}}{2a} \Exp{ -a \lambda} + 
+\dfrac{\E{Z_i} + a}{2a} \Exp{a \lambda} \\
+%%%
+&\leq 
+\dfrac{a}{2a} \Exp{ -a \lambda} + 
+\dfrac{a}{2a} \Exp{a \lambda} \\
+%%%
+&\leq 
+\dfrac{1}{2} \Exp{ -a \lambda} + 
+\dfrac{1}{2} \Exp{a \lambda} \\
+&\leq 
+\Exp{ -a \lambda} + 
+\Exp{a \lambda} \\
+\end{align*}
+
+Calculating the Taylor's expansion of the right-hand side of the inequality over $\lambda$ and simplifying,
+
+\begin{align*}
+\Exp{ -a \lambda} +
+\Exp{a \lambda}
+&=
+\left(1 - a \lambda + \dfrac{a^2 \lambda^2}{2} - \dfrac{a^3 \lambda^3}{6} + \ldots\right) +
+\left(1 + a \lambda + \dfrac{a^2 \lambda^2}{2} + \dfrac{a^3 \lambda^3}{6} + \ldots\right) \\
+%%%
+&=
+1 + \dfrac{a^2 \lambda^2}{2} + \dfrac{a^4 \lambda^4}{24}\ldots\\
+\end{align*}
+
+We recognize that the Taylor's expansion of $\Exp{\dfrac{a^2\lambda^2}{2}}$ is:
+
+\begin{align*}
+\Exp{\dfrac{a^2\lambda^2}{2}} = 1 + \dfrac{a^2 \lambda^2}{2} + \dfrac{a^4 \lambda^4}{8}\ldots
+\end{align*}
+
+meaning that:
+
+\begin{align*}
+1 + \dfrac{a^2 \lambda^2}{2} + \dfrac{a^4 \lambda^4}{24}\ldots
+& \leq
+1 + \dfrac{a^2 \lambda^2}{2} + \dfrac{a^4 \lambda^4}{8}\ldots\\
+%%%
+\Exp{ -a \lambda} + \Exp{a \lambda} &\leq \Exp{\dfrac{a^2\lambda^2}{2}}\\ 
+\end{align*}
+
+Therefore
+
+\begin{align*}
+\E{\Exp{\lambda Z_i}} \leq \exp\left(\frac{\lambda^2 a^2}{2}\right)
+\end{align*}
+\end{proof}

@@ -1,0 +1,130 @@
+\documentclass[letterpaper]{article}
+
+% No page numbers.
+\pagestyle{empty}
+
+% Change the margins to 1 inch all around.
+\usepackage[margin=1in]{geometry}
+
+% for setting the linespace (\setstretch)
+\usepackage{setspace}
+
+% distance between the columns (for the multicols)
+\setlength{\columnsep}{1cm}
+
+% for compactitem
+\usepackage{paralist}
+
+% Hyperlinks inside the document.
+\usepackage{hyperref}
+
+\usepackage{verbatim}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage{amssymb}
+\usepackage{parskip}
+\usepackage{breqn}
+\usepackage{booktabs}
+\usepackage{pdfpages}
+\usepackage{multirow}
+\usepackage{parskip}
+\usepackage{array}
+\usepackage{amsthm} 
+
+% for the bibliography
+\usepackage[authordate, backend=biber, natbib=true]{biblatex-chicago}
+\addbibresource{bibliography.bib} % Link to your bibliography file
+
+% lorem ipsum generator.
+\usepackage{lipsum}
+
+%%%%% Extra math symbols %%%%%
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\plim}{plim}
+
+%%%%% Extra Commands %%%%%
+\newcommand{\E}[1]{\mathbb{E}\left[#1\right]}
+\newcommand{\indicator}[1]{\mathbf{1}_{\{#1\}}}
+\newcommand{\prob}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\var}[1]{\text{Var}\left(#1\right)}
+\newcommand{\cov}[1]{\text{Cov}\left(#1\right)}
+\newcommand{\corr}[1]{\text{Corr}\left(#1\right)}
+\newcommand{\convP}{\xrightarrow{\mathbb{P}}}
+\newcommand{\Exp}[1]{\exp\left(#1\right)}
+\renewcommand{\Vec}[1]{\mathbf{#1}}
+\newcommand{\Mat}[1]{\mathbb{#1}}
+\newcommand{\tr}[1]{\text{tr}\left(#1\right)}
+
+
+%%%%% Color definitions %%%%%
+\definecolor{lightgray}{gray}{-1.9}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%% Extra Environments %%%%%
+\newtheorem*{claim*}{Claim}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{def*}{Definition}
+
+%%%%% Answer box environment %%%%%
+\newtcolorbox{myanswerbox}[1][]{
+  colback=white!, % Background color
+  colframe=white!25!black, % Bourder color
+  fonttitle=\bfseries, %  Font style of the title
+  title=#1, %  Title
+  arc=0mm, %  Rounded corners
+  #1
+}
+
+% Style configuration for the code listings.
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+%=============================
+\input{misc/title}
+%\newpage
+%=============================
+\input{sections/question-1}
+\input{sections/question-2}
+\input{sections/question-3}
+\input{sections/question-4}
+
+%\newpage
+%=============================
+%\section*{References}
+% the \nocite command leads to the whole bibliography
+% being displayed (without any \cite commands necessary).
+% remove this command in order to get the "normal" behavior.
+%\nocite{*}
+%\newpage
+%\printbibliography[heading=none]
+
+\end{document}

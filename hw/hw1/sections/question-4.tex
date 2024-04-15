@@ -2,8 +2,108 @@
 %%%%% PROBLEM STATEMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{myanswerbox}
 While proving the maximal inequality, i.e., a bound on
-\[ P\left(\max_{1 \leq j \leq p} \left| \frac{1}{n} \sum_{i=1}^{n} X_{ij} - \mu_j \right| \geq t \right), \]
+\[ 
+    \prob{
+        \max_{1 \leq j \leq p} \left| \frac{1}{n} \sum_{i=1}^{n} X_{ij} - \mu_j \right| \geq t 
+    }, 
+\]
 we applied the union bound followed by the Hoeffding inequality. Show what happens if we replace the Hoeffding inequality by the Chebyshev inequality.
 \end{myanswerbox}
 %%%%% QUESTION SEPARATOR %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Answer %%%%%
+\begin{theorem}[Chebyshev's inequality]
+    Given a random variable $X$ with mean $\mu$ and variance $\sigma^2$, then:
+
+    \begin{align*}
+    \prob{|X - \mu| \geq t} \leq \frac{\sigma^2}{t^2}, \quad \forall t > 0
+    \end{align*}
+\end{theorem}
+
+The dimension of each random vector $X_i$ is $p$, where $X_i = [X_{i,1}, \cdots, X_{i,p}]'$, and $X_{i,j}$ is the $j$-th component of the $i$-th random vector. 
+
+Also, recall that:
+
+\begin{align*}
+    |X_{i,j} - \mu_{j}| \leq a, \quad, \forall i = 1, \cdots, n, \quad \forall j = 1, \cdots, p, \quad \forall a > 0
+    %\label{eq:bound-in-mean}
+\end{align*}
+
+
+By the union bound,
+
+\begin{align*}
+\prob{
+    \max_{1 \leq j \leq p}{
+        \left|
+            \frac{1}{n} \sum_{i=1}^{n} X_{i,j} - \mu_{j}
+        \right|
+    }
+    \geq
+    t
+}
+\leq
+\sum_{j=1}^{p} \prob{
+    \left|
+        \frac{1}{n} \sum_{i=1}^{n} X_{i,j} - \mu_{j}
+    \right|
+    \geq
+    t
+}
+\end{align*}
+
+By the Chebyshev's inequality,
+
+\begin{align*}
+\sum_{j=1}^{p} \prob{
+    \left|
+        \frac{1}{n} \sum_{i=1}^{n} X_{i,j} - \mu_{j}
+    \right|
+    \geq
+    t
+}
+\leq
+\sum_{j=1}^{p} \frac{\sigma_j^2}{n t^2}
+\end{align*}
+
+We know that each component of the random vector $X_i$ is bounded in mean by $a$, i.e., $|X_{i,j} - \mu_{j}| \leq a$. Therefore, $\sigma_j^2 \leq a^2$.
+
+\begin{align*}
+\sum_{j=1}^{p} \prob{
+    \left|
+        \frac{1}{n} \sum_{i=1}^{n} X_{i,j} - \mu_{j}
+    \right|
+    \geq
+    t
+}
+\leq
+\sum_{j=1}^{p} \frac{\sigma_j^2}{n t^2} \leq \sum_{j=1}^{p} \frac{a^2}{n t^2} = \frac{p a^2}{n t^2}
+\end{align*}
+
+In other words, according to the Chebyshev's inequality:
+
+\begin{align*}
+\prob{
+    \max_{1 \leq j \leq p}{
+        \left|
+            \frac{1}{n} \sum_{i=1}^{n} X_{i,j} - \mu_{j}
+        \right|
+    }
+    \geq
+    \dfrac{a \sqrt{p}}{\sqrt{\epsilon}\sqrt{n}}
+}
+\leq
+\epsilon
+\end{align*}
+
+Or Using the big O notation,
+
+\begin{align*}
+    \max_{1 \leq j \leq p}{
+        \left|
+            \frac{1}{n} \sum_{i=1}^{n} X_{i,j} - \mu_{j}
+        \right|
+    }
+= O_p\left(\sqrt{\dfrac{p}{n}}\right)
+\end{align*}
+
+Which indicates a rate of convergence slower than the one obtained by the Hoeffding's inequality.

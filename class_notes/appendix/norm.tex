@@ -2,39 +2,110 @@
 \label{sec:norms}
 
 \begin{def*}
-A norm on a metric vector space \(V\) over a field \(F\) (usually \(\mathbb{R}\) or \(\mathbb{C}\)) is a function \(\|\cdot\|: V \rightarrow [0, \infty)\) that satisfies the following properties for all vectors \(u, v \in V\) and all scalars \(\alpha \in F\):
+A norm on a metric vector space \(V\) over a field \(F\) (usually \(\mathbb{R}\) or \(\mathbb{C}\)) is a function \(\|\cdot\|: V \rightarrow [0, \infty)\) that satisfies the following properties for all vectors \(\Vec{u}, \Vec{v} \in V\) and all scalars \(\alpha \in F\):
 \begin{enumerate}
-    \item \(\|v\| = 0\) if and only if \(v = 0\).
-    \item \(\|\alpha v\| = |\alpha| \|v\|\) (Absolute scalability).
-    \item \(\|u + v\| \leq \|u\| + \|v\|\) (Triangle inequality).
+    \item \(\|\Vec{v}\| = 0\) if and only if \(\Vec{v} = \Vec{0}\).
+    \item \(\|\alpha \Vec{v}\| = |\alpha| \|\Vec{v}\|\) (Absolute scalability).
+    \item \(\|\Vec{u} + \Vec{v}\| \leq \|\Vec{u}\| + \|\Vec{v}\|\) (Triangle inequality).
 \end{enumerate}
 \end{def*}
 
-Some common norms include:
+Some common norms Defined in the vector space \(V = \mathbb{R}^p \) include:
 
 \begin{itemize}
     \item \textbf{Zero norm} (or \(l_0\) norm):
     \begin{align*}
-        \|v\|_0 = \sum_{i=1}^n \indicator{v_i \neq 0}
+        \|\Vec{v}\|_0 = \sum_{i=1}^p \indicator{v_i \neq 0}
     \end{align*}
 
     \item \textbf{Manhattan norm} (or \(l_1\) norm):
     \begin{align*}
-        \|v\|_1 = \sum_{i=1}^n |v_i|
+        \|\Vec{v}\|_1 = \sum_{i=1}^p |v_i|
     \end{align*}
 
     \item \textbf{Euclidean norm} (or \(l_2\) norm):
     \begin{align*}
-        \|v\|_2 = \sqrt{\sum_{i=1}^n |v_i|^2}
+        \|\Vec{v}\|_2 = \sqrt{\sum_{i=1}^p |v_i|^2}
     \end{align*}
     
-    \item \textbf{General \(l_p\) norm}:
+    \item \textbf{General \(l_q\) norm}:
     \begin{align*}
-        \|v\|_p = \left(\sum_{i=1}^n |v_i|^p\right)^{1/p}
+        \|\Vec{v}\|_q = \left(\sum_{i=1}^p |v_i|^q\right)^{1/q}
     \end{align*}
 
     \item \textbf{Maximum norm} (or \(l_\infty\) norm):
     \begin{align*}
         \|v\|_\infty = \max_{i=1}^n |v_i|
     \end{align*}
+
+    \item \textbf{ \(l_2\) Prediction norm}:
+    
+    For a matrix $\Mat{X} \in \mathbb{R}^{n \times p}$
+
+    \begin{align*}
+        \|\Vec{v}\|_{2, n} = \sqrt{
+            \frac{1}{n}
+            \Vec{v}'\Mat{X}'\Mat{X}\Vec{v}
+        }
+        =
+        \sqrt{
+            \frac{1}{n}
+            \sum_{i=1}^n \left(\Vec{X}_i'\Vec{v}\right)^2
+        }
+    \end{align*}
 \end{itemize}
+
+Often the matrix $\Mat{X}$ is defined as the \emph(design matrix) in a linear regression model. From a random sample $\{(\Vec{X}_1, Y_1), \cdots, (\Vec{X}_n, Y_n)\} \overset{iid}{\sim} (\Vec{X}, Y)$, where $\Vec{X}_i \in \mathbb{R}^p$ is a column vector, and $Y_i \in \mathbb{R}$. The design matrix is defined as $\Mat{X} = (\Vec{X}_1, \cdots, \Vec{X}_n)'$.
+
+An specific case of the \emph{prediction norm} is in the context of linear regression, where:
+
+\[
+    \|\hat{\beta} - \beta\|_{2, n} 
+    = 
+    \sqrt{
+        \frac{1}{n}
+        (\hat{\beta} - \beta)'\Mat{X}'\Mat{X}(\hat{\beta} - \beta)
+    }
+\]
+
+\subsection{Useful inequalities Involving Norms}
+
+\begin{theorem}[Cauchy-Schwarz Inequality]
+For any vectors \(\Vec{u}, \Vec{v} \in \mathbb{R}^p\), and a norm \(\|\cdot\|\),
+\begin{align*}
+    |\Vec{u}'\Vec{v}| \leq \|\Vec{u}\| \|\Vec{v}\|
+\end{align*}
+\begin{proof}
+\begin{align*}
+    |\Vec{u}'\Vec{v}| &= \left|\sum_{i=1}^p u_i v_i\right| 
+    \leq \sum_{i=1}^p |u_i v_i| 
+    \leq \sum_{i=1}^p |u_i| |v_i|\\
+    |\Vec{u}'\Vec{v}| &= \|\Vec{u}\| \|\Vec{v}\|
+\end{align*}
+\end{proof}
+\end{theorem}
+
+\begin{theorem}[Asymetric H\"older's Inequality]
+For any vectors \(\Vec{u}, \Vec{v} \in \mathbb{R}^p\), 
+\begin{align*}
+    |\Vec{u}'\Vec{v}| \leq \|\Vec{u}\|_1 \|\Vec{v}\|_{\infty}
+\end{align*}
+    \begin{proof}
+    \begin{align*}
+        |\Vec{u}'\Vec{v}| &= \left|\sum_{i=1}^p u_i v_i\right| 
+        \leq \sum_{i=1}^p |u_i v_i| 
+        \leq \sum_{i=1}^p |u_i| \max_{i=1}^p |v_i| \\
+        |\Vec{u}'\Vec{v}| &= \|\Vec{u}\|_1 \|\Vec{v}\|_{\infty}
+    \end{align*}
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}[Triangle Inequality]
+For any vectors \(\Vec{u}, \Vec{v} \in \mathbb{R}^p\), and a norm \(\|\cdot\|\),
+\begin{align*}
+    \|\Vec{u} + \Vec{v}\| \leq \|\Vec{u}\| + \|\Vec{v}\|
+\end{align*}
+\begin{proof}
+    The proof is trivial given that the triangle inequality is a property of norms.
+\end{proof}
+\end{theorem}

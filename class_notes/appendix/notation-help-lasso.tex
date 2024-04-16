@@ -1,0 +1,67 @@
+\section{Helpful Notation for n LASSO Theory}
+\label{sec:notation-help-lasso}
+
+Recall the linear model:
+
+\begin{align*}
+Y = \Vec{X}'\beta + \varepsilon, 
+    \quad \E{\varepsilon|\Vec{X}} = 0
+\end{align*}
+
+and a random sample $(\Vec{X}_1, Y_1), \cdots, (\Vec{X}_n, Y_n) \overset{iid}{\sim} (\Vec{X}, Y)$, where $\Vec{X}_i \in \mathbb{R}^p$ and $Y_i \in \mathbb{R}$.
+
+Potentially, $p \sim n$, $p > n$ or $p >> n$.
+
+\begin{Def}
+Given a vector of  coefficients $\beta \in \mathbb{R}^p$, the sets $T$ and $T^{\complement}$ are defined as:
+
+\begin{align*}
+T &= \lbrace
+j \in \{1, \cdots, p \} : \beta_j \neq 0, \forall 
+\rbrace  \\
+T^{\complement} &= \{1, 2, \cdots, p\} \setminus T
+\end{align*}
+
+where $T$ denotes the set of indices of the non-zero coefficients in $\beta$, and $T^{\complement}$ is the set of indices of the zero coefficients.
+
+the cardinality of $T$ is $S = |T|$ and the cardinality of $T^{\complement}$ is $|T^{\complement}| = p - S$, where $S$ is the \emph{Sparsity Index}. By definition, $|T \cup T^{\complement}| = p$.
+\end{Def}
+
+\begin{Def}
+Being $T$ and $T^{\complement}$ the sets of indices of the non-zero and zero coefficients in $\beta$, respectively, and a vector $\Vec{v} \in \mathbb{R}^p$, 
+
+\begin{align*}
+    \Vec{v}_T &= \begin{cases}
+        \Vec{v}_j, &  j \in T \\
+        0, &  j \notin T
+    \end{cases}\\
+    %%%
+    \Vec{v}_{T^{\complement}} &= \begin{cases}
+        \Vec{v}_j, &  j \in T^{\complement}\\
+        0, &  j \notin T^{\complement}
+    \end{cases}\\
+\end{align*}
+
+Are the projections of $\Vec{v}$ onto the sets $T$ and $T^{\complement}$, respectively.
+
+By definition:
+
+\[
+\Vec{v} = \Vec{v}_T + \Vec{v}_{T^{\complement}}
+\]
+\end{Def}
+
+\begin{Def}[Compatibility Constant]
+$\forall c > 0$,
+
+\begin{align*}
+k_c &= \inf_{\delta \in \mathbb{R}^p}{
+    \dfrac{\sqrt{S} \|\delta\|_{2, n}}{\|\delta\|_1}
+}\\
+&\text{s.t.}\\
+&\|\delta_{T^{\complement}}\|_1 \leq c \|\delta_T\|_1
+\end{align*}
+
+where $\delta = \hat{\beta} - \beta$ is the diference between the estimated and true coefficients, and $\|\delta\|_{2, n} = \sqrt{\frac{1}{n} \delta'\Mat{X}\Mat{X}\delta}$ where $\Mat{X} = (\Vec{X}_1, \cdots, \Vec{X}_n)'$ is the design matrix.
+\end{Def}
+

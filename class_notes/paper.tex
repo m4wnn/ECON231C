@@ -79,9 +79,15 @@
 \begin{document}
 
 %%%%% Extra Environments %%%%%
+\newtheorem*{theorem*}{Theorem}
 \newtheorem*{claim*}{Claim}
 \newtheorem*{lemma*}{Lemma}
 \newtheorem*{def*}{Definition}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{lemma}{Lemma}
+\newtheorem{Def}{Definition}
 
 %%%%% Answer box environment %%%%%
 \newtcolorbox{myanswerbox}[1][]{
@@ -126,9 +132,11 @@
 \input{sections/maximal-inequality.tex}
 \input{sections/high-dim-reg.tex}
 \input{sections/sparsity.tex}
+\input{sections/main-lasso-result.tex}
 
 \newpage
 \appendix
 \input{appendix/big-O.tex}
 \input{appendix/norm.tex}
+\input{appendix/notation-help-lasso.tex}
 \end{document}

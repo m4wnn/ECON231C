@@ -1,0 +1,36 @@
+\section*{
+    Main LASSO Result: Proof of Theorem
+    \footnote{For clarification on notation, see appendix \ref{sec:notation-help-lasso}.}
+}
+
+\begin{theorem}[Main LASSO Result]
+\label{thm:main-lasso-result}
+$\forall c > 1$, if for some $\lambda > 0$:
+
+\begin{align*}
+\lambda > \dfrac{2c}{n}
+\max_{1 \leq j \leq p} \left|
+    \Vec{X}_j' \epsilon
+\right|
+=
+\max_{1 \leq j \leq p} \left|
+    \sum_{i=1}^{n}X_{i,j}' \varepsilon_i
+\right|
+\end{align*}
+
+then, the following inequalities hold:
+
+\begin{align*}
+\|\hat{\beta} - \beta\|_{2, n}
+&\leq 
+\left(1 + \dfrac{1}{c}\right)
+\dfrac{\lambda \sqrt{S}}{k_{\bar{c}}}\\
+%%%%%
+\|\hat{\beta} - \beta\|_{1}
+&\leq 
+\left(1 + \bar{c}\right) \left(1 + \dfrac{1}{c}\right)
+\dfrac{\lambda S}{k_{\bar{c}}}\\
+\end{align*}
+
+where $\hat{c} = \dfrac{c+1}{c-1}$
+\end{theorem}

@@ -88,9 +88,11 @@ which is often used to calculate the prediction norm:
 
 \begin{align*}
 \|\beta - \hat{\beta}\|_{2,n} 
+    = \|\delta\|_{2,n} 
     = \sqrt{\frac{1}{n} \delta'\Mat{X}\Mat{X}'\delta} 
     = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (\Vec{X}_i'\delta)^2}
     = \sqrt{\frac{1}{n} \Vec{e}'\Vec{e}}
+    = \rmse{\Mat{X}\hat{\beta}}
 \end{align*}
 
 \begin{Def}

@@ -1,7 +1,8 @@
-\section*{
-    Main LASSO Result: Proof of Theorem
-    \footnote{For clarification on notation, see appendix \ref{sec:notation-help-lasso}.}
+\section{
+    Main LASSO Result: Proof of Theorem 
 }
+
+For clarification on notation, consult appendix \ref{sec:notation-help-lasso}.
 
 \begin{theorem}[Main LASSO Result]
 \label{thm:main-lasso-result}
@@ -10,11 +11,12 @@ $\forall c > 1$, if for some $\lambda > 0$:
 \begin{align*}
 \lambda > \dfrac{2c}{n}
 \max_{1 \leq j \leq p} \left|
-    \Vec{X}_j' \epsilon
+    \sum_{i=1}^{n}X_{i,j} \varepsilon_i
 \right|
-=
+= 
+\dfrac{2c}{n}
 \max_{1 \leq j \leq p} \left|
-    \sum_{i=1}^{n}X_{i,j}' \varepsilon_i
+    \Vec{X}_{(j)}' \epsilon
 \right|
 \end{align*}
 
@@ -34,3 +36,47 @@ then, the following inequalities hold:
 
 where $\hat{c} = \dfrac{c+1}{c-1}$
 \end{theorem}
+
+Recall the linear regression:
+
+\begin{align}
+    \Vec{Y} = \Mat{X} \beta + \epsilon
+    \label{eq:linear-regression}
+\end{align}
+
+The \emph{LASSO} estimator is defined as:
+
+\begin{align}
+\hat{\beta} 
+=  \argmin_{b \in \mathbb{R}^p} 
+    \dfrac{1}{n} \sum_{i=1}^{n} (Y_i - \Vec{X}_i' b)^2
+    + \lambda \sum_{j=1}^{p} |b_j|
+= \argmin_{b \in \mathbb{R}^p} 
+    \dfrac{1}{n} \|\Vec{Y} - \Mat{X} b\|_{2}^{2}
+    + \lambda \|b\|_{1}
+\label{eq:lasso-estimator}
+\end{align}
+
+And lets denote $\delta = \hat{\beta} - \beta \in \mathbb{R}^p$.
+
+We are intending to prove the main Lasso result (theorem \ref{thm:main-lasso-result}). In order to do so, we will introduce the following claims that, when combined, are sufficient to prove the theorem.
+
+\begin{claim}
+\label{claim:lasso-claim-1}
+For all $\lambda$ which satisfies the condition of theorem \ref{thm:main-lasso-result}, the following inequality holds:
+
+\begin{align*}
+\|\delta_{T^{\complement}}\|_1 \leq \bar{c} \|\delta_{T}\|_1
+\end{align*}
+\end{claim}
+
+\begin{claim}
+\label{claim:lasso-claim-2}
+For all $\lambda$ which satisfies the condition of theorem \ref{thm:main-lasso-result}, the following inequality holds:
+
+\begin{align*}
+\|\delta\|_{2, n}^2 \leq \left(1 + \dfrac{1}{c}\right) \lambda \|\delta_T\|_1
+\end{align*}
+
+Which $\|\delta\|_{2, n}^2$ denotes the $MSE(\hat{\beta})$.
+\end{claim}

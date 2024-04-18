@@ -2,11 +2,73 @@
 %%%%% PROBLEM STATEMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{myanswerbox}
 (Tricky) While proving the Hoeffding inequality, we have used the following bound:
-\[ P(X > \delta) \leq \frac{E[e^{\lambda X}]}{e^{\lambda \delta}}, \quad \lambda > 0. \]
+\[ 
+    \prob{X > \delta} \leq \frac{\E{e^{\lambda X}}}{e^{\lambda \delta}}, \quad \lambda > 0. 
+\]
 An alternative could be
-\[ P(X > \delta) \leq \frac{E[|X|^k]}{\delta^k}, \quad k \geq 0. \]
+\[ \prob{X > \delta} \leq \frac{\E{|X|^k}}{\delta^k}, \quad k \geq 0. \]
 Show that if \( X \geq 0 \) a.s., then
-\[ \inf_{k=0,1,2,\ldots} \frac{E[|X|^k]}{\delta^k} \leq \inf_{\lambda>0} \frac{E[e^{\lambda X}]}{e^{\lambda \delta}}. \]
+\[ \inf_{k=0,1,2,\ldots} \frac{\E{|X|^k}}{\delta^k} \leq \inf_{\lambda>0} \frac{\E{e^{\lambda X}}}{e^{\lambda \delta}}. \]
 \end{myanswerbox}
 %%%%% QUESTION SEPARATOR %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Answer %%%%%
+
+\begin{proof}
+From the right hand side of the inequality, we note that the following expressions are equivalent:
+\begin{align*}
+\frac{\E{e^{\lambda X}}}{e^{\lambda \delta}} = 
+\E{\frac{e^{\lambda X}}{e^{\lambda \delta}}} =
+\E{\left(\frac{e^{X}}{e^{\delta}}\right)^{\lambda}} = 
+\E{\left(e^{X - \delta}\right)^{\lambda}}
+\end{align*}
+
+Taking the Taylor's expansion of $\left(e^{X - \delta}\right)^{\lambda}$ around $\lambda = 0$:
+\begin{align*}
+\left(e^{X - \delta}\right)^{\lambda} = 1 + (X - \delta) + \lambda^2 \dfrac{(X - \delta)^2}{2!}
++ \lambda^3 \dfrac{(X - \delta)^3}{3!} + \cdots
+\end{align*}
+
+Taking the expected value of that expansion:
+\begin{align*}
+\E{\left(e^{X - \delta}\right)^{\lambda}} = 1 + \lambda \E{(X - \delta)} + \lambda^2 \dfrac{\E{(X - \delta)^2}}{2!}
++ \lambda^3 \dfrac{\E{(X - \delta)^3}}{3!} + \cdots
+\end{align*}
+
+We are interested in $\inf_{\lambda>0} \frac{\E{e^{\lambda X}}}{e^{\lambda \delta}}$. Given the above expansion, we can see that the infimum of the right hand side of the inequality can by approximated by takin the limit where $\lambda \to 0^+$:
+
+\begin{align*}
+\lim_{\lambda \to 0^+} 1 + \lambda \E{(X - \delta)} + \lambda^2 \dfrac{\E{(X - \delta)^2}}{2!}
++ \lambda^3 \dfrac{\E{(X - \delta)^3}}{3!} + \cdots = 1
+\end{align*}
+
+Meaning that $\inf_{\lambda>0} \frac{\E{e^{\lambda X}}}{e^{\lambda \delta}} = 1$.
+
+Now, we are interested in $\inf_{k=0,1,2,\ldots} \frac{\E{|X|^k}}{\delta^k}$. We can see that the left hand side of the inequality can be approximated by taking the limit where $k \to \infty$
+
+\begin{align*}
+\lim_{k \to \infty} \frac{\E{|X|^k}}{\delta^k} = \lim_{k \to \infty} \frac{\E{X^k}}{\delta^k}
+\end{align*}
+
+Assuming that all the moments of $X$ exist, we can see that the limit of the left hand side of the inequality depends on the value of $\delta$. 
+
+If $0 \geq \delta < 1$, then:
+
+\begin{align*}
+\lim_{k \to \infty} \frac{\E{X^k}}{\delta^k} = \infty
+\end{align*}
+
+Meaning that the infimum of the left hand side of the inequality is $\inf_{k=0,1,2,\ldots} \frac{\E{|X|^k}}{\delta^k} = \frac{\E{|X|^0}}{\delta^0} = 1$.
+
+
+If $\delta \geq 1$, then:
+
+\begin{align*}
+\lim_{k \to \infty} \frac{\E{X^k}}{\delta^k} = 0
+\end{align*}
+
+Meaning that the infimum of the left hand side of the inequality is $\inf_{k=0,1,2,\ldots} \frac{\E{|X|^k}}{\delta^k} = 0$.
+
+Therefore, for any $\delta > 0$, and $\lambda > 0$, we have that:
+
+\[ \inf_{k=0,1,2,\ldots} \frac{\E{|X|^k}}{\delta^k} \leq \inf_{\lambda>0} \frac{\E{e^{\lambda X}}}{e^{\lambda \delta}}. \]
+\end{proof}

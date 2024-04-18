@@ -1,4 +1,4 @@
-\section{Helpful Notation for n LASSO Theory}
+\section{Helpful Notation for LASSO Theory}
 \label{sec:notation-help-lasso}
 
 Recall the linear model:
@@ -7,10 +7,91 @@ Recall the linear model:
 Y = \Vec{X}'\beta + \varepsilon, 
     \quad \E{\varepsilon|\Vec{X}} = 0
 \end{align*}
+ 
+Where:
+\begin{itemize}
+\item Vector of $p$ covariates: $\Vec{X} = (X_1, \cdots, X_j, \cdots , X_p)' \in \mathbb{R}^p$
+\item Dependent Variable: $Y \in \mathbb{R}$
+\item Vector of coefficients: $\beta = (\beta_1, \cdots, \beta_j, \cdots, \beta_p)' \in \mathbb{R}^p$
+\item Error term: $\varepsilon \in \mathbb{R}$
+\end{itemize}
 
 and a random sample $(\Vec{X}_1, Y_1), \cdots, (\Vec{X}_n, Y_n) \overset{iid}{\sim} (\Vec{X}, Y)$, where $\Vec{X}_i \in \mathbb{R}^p$ and $Y_i \in \mathbb{R}$.
 
+The linear regression (incorporating the random sample) is denoted as:
+
+\begin{align*}
+Y_i = \Vec{X}_i'\beta + \varepsilon_i, 
+    \quad \E{\varepsilon_i|\Vec{X}_i} = 0, \quad \forall i = 1, \cdots, n
+\end{align*}
+
+We can express the same regression in matrix form:
+
+\begin{align*}
+\Vec{Y} = \Mat{X}'\beta + \epsilon, 
+    \quad \E{\epsilon|\Mat{X}} = 0
+\end{align*}
+
+Where:
+\begin{itemize}
+\item Dependent Vector: $\Vec{Y} = (Y_1, \cdots, Y_i, \cdots, Y_n)' \in \mathbb{R}^n$
+\item Design Matrix: 
+    \begin{align*}
+        \Mat{X} &= \left[
+            \begin{array}{cccccc}
+                X_{11} & \cdots & X_{1j} & \cdots & X_{1p} \\
+                \vdots & \ddots & \vdots & \ddots & \vdots \\
+                X_{i1} & \cdots & X_{ij} & \cdots & X_{ip} \\
+                \vdots & \ddots & \vdots & \ddots & \vdots \\
+                X_{n1} & \cdots & X_{nj} & \cdots & X_{np} \\
+            \end{array}
+        \right] \in \mathbb{R}^{n \times p}\\
+        \Mat{X} &= \left[
+            \begin{array}{cccccc}
+                \Vec{X}_{1}' \\
+                \vdots \\
+                \Vec{X}_{i}' \\
+                \vdots \\
+                \Vec{X}_{n}' \\
+            \end{array}
+        \right] = (\Vec{X}_1, \cdots, \Vec{X}_i, \cdots, \Vec{X}_n)' \in \mathbb{R}^{n \times p}\\
+        \Mat{X} &= (\Vec{X}_{(1)}, \cdots, \Vec{X}_{(j)}, \cdots, \Vec{X}_{(p)}) \in \mathbb{R}^{n \times p}\\
+    \end{align*}
+\item Vector of coefficients: $\beta = (\beta_1, \cdots, \beta_j, \cdots, \beta_p)' \in \mathbb{R}^p$
+\item Error Vector: $\epsilon = (\varepsilon_1, \cdots, \varepsilon_i, \cdots, \varepsilon_n)' \in \mathbb{R}^n$
+\end{itemize}
+
 Potentially, $p \sim n$, $p > n$ or $p >> n$.
+
+
+The estimated linear regression is:
+\begin{align*}
+\widehat{\Vec{Y}} = \Mat{X}'\hat{\beta}
+\end{align*}
+
+Where, for \emph{OLS}, the vector estimator of coefficients is given by:
+
+\begin{align*}
+\hat{\beta} = (\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{Y}
+\end{align*}
+
+The error of estimation is given by:
+
+\begin{align*}
+\Vec{e} &= \E{\Vec{Y}|\Mat{X}} - \widehat{\Vec{Y}}\\
+&= \Mat{X}'\beta - \Mat{X}'\hat{\beta}\\
+&= \Mat{X}'(\beta - \hat{\beta}) \\
+&= \Mat{X}'\delta
+\end{align*}
+
+which is often used to calculate the prediction norm:
+
+\begin{align*}
+\|\beta - \hat{\beta}\|_{2,n} 
+    = \sqrt{\frac{1}{n} \delta'\Mat{X}\Mat{X}'\delta} 
+    = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (\Vec{X}_i'\delta)^2}
+    = \sqrt{\frac{1}{n} \Vec{e}'\Vec{e}}
+\end{align*}
 
 \begin{Def}
 Given a vector of  coefficients $\beta \in \mathbb{R}^p$, the sets $T$ and $T^{\complement}$ are defined as:

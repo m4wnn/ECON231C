@@ -51,7 +51,7 @@ Now, we are interested in $\inf_{k=0,1,2,\ldots} \frac{\E{|X|^k}}{\delta^k}$. We
 
 Assuming that all the moments of $X$ exist, we can see that the limit of the left hand side of the inequality depends on the value of $\delta$. 
 
-If $0 \geq \delta < 1$, then:
+If $0 < \delta \leq 1$, then:
 
 \begin{align*}
 \lim_{k \to \infty} \frac{\E{X^k}}{\delta^k} = \infty
@@ -60,7 +60,7 @@ If $0 \geq \delta < 1$, then:
 Meaning that the infimum of the left hand side of the inequality is $\inf_{k=0,1,2,\ldots} \frac{\E{|X|^k}}{\delta^k} = \frac{\E{|X|^0}}{\delta^0} = 1$.
 
 
-If $\delta \geq 1$, then:
+If $\delta > 1$, then:
 
 \begin{align*}
 \lim_{k \to \infty} \frac{\E{X^k}}{\delta^k} = 0

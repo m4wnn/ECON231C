@@ -146,5 +146,24 @@ k_c &= \inf_{\delta \in \mathbb{R}^p}{
 \end{align*}
 
 where $\delta = \hat{\beta} - \beta$ is the diference between the estimated and true coefficients, and $\|\delta\|_{2, n} = \sqrt{\frac{1}{n} \delta'\Mat{X}\Mat{X}\delta}$ where $\Mat{X} = (\Vec{X}_1, \cdots, \Vec{X}_n)'$ is the design matrix.
+
+The restriction set is often denoted as:
+$\mathcal{R}_{c} = \{\delta \in \mathbb{R}^p: \|\delta_{T^\complement}\| \leq c \|\delta_T\|_1\|\}$
 \end{Def}
 
+
+\begin{Def}[Compatibility Constant (Alternative)]
+$\forall \bar{c} > 0$,
+
+\begin{align*}
+k_{\bar{c}} &= \inf_{\delta \in \mathbb{R}^p}{
+    \dfrac{\sqrt{S} \|\delta\|_{2, n}}{\|\delta\|_1}
+}\\
+&\text{s.t.}\\
+&\|\delta_{T^{\complement}}\|_1 \leq \bar{c} \|\delta_T\|_1
+\end{align*}
+
+where $\delta = \hat{\beta} - \beta$ is the diference between the estimated and true coefficients, and $\|\delta\|_{2, n} = \sqrt{\frac{1}{n} \delta'\Mat{X}\Mat{X}\delta}$ where $\Mat{X} = (\Vec{X}_1, \cdots, \Vec{X}_n)'$ is the design matrix.
+
+The restriction set is often denoted as $\mathcal{R}_{\bar{c}} = \{\delta \in \mathbb{R}^p: \|\delta_{T^\complement}\| \leq \bar{c} \|\delta_T\|_1\|\}$, and $\bar{c} = \dfrac{c+1}{c-1}$.
+\end{Def}

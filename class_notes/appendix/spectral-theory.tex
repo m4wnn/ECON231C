@@ -1,0 +1,60 @@
+\section{Spectral Theory}
+\label{sec:spectral-theory}
+
+Spectral theory refers to the study of the eigenvalues and eigenvectors of a matrix. In this section, we will discuss some basic results from spectral theory that will be useful in our discussion of Lasso Theory.
+
+\begin{Def}[Eigenvalues and Eigenvectors]
+    Given a symmetric square matrix $\Mat{A} \in \mathbb{R}^{p \times p}$
+
+    \[
+        \Mat{A}\Vec{x} = \lambda \Vec{x}
+    \]
+    for some $\lambda \in \mathbb{R}$ and $\Vec{x} \in \mathbb{R}^p$, where $\Vec{x} \neq \Vec{0}$, then $\lambda$ is called an eigenvalue of $\Mat{A}$ and $\Vec{x}$ is called an eigenvector of $\Mat{A}$.
+
+    Without loss of generality, we can assume that the eigenvectors are normalized, i.e., $\Vec{x}'\Vec{x} = \|\Vec{x}\|_2 = 1$.
+\end{Def}
+
+\begin{theorem}[Spectral Decomposition]
+    For all symmetric matrices $\Mat{A} \in \mathbb{R}^{p \times p}$, there exists $p$ pairs $(\lambda_1, \Vec{x}_1), \ldots, (\lambda_p, \Vec{x}_p)$ such that:
+
+    \[
+        \Mat{A}\Vec{x}_j = \lambda_j\Vec{x}_j, \quad \forall j = 1, \ldots, p 
+    \]
+
+    Without loss of generality, we can assume that the eigenvalues are ordered in an increasing order, i.e., $\lambda_1 \leq \lambda_2 \leq \ldots \leq \lambda_p$.
+\end{theorem}
+\begin{proof}
+    Consider the following optimization problem:
+    \begin{align*}
+        \Vec{x}^* = \argmin_{\Vec{x} \in \mathbb{R}^p} \Vec{x}'\Mat{A}\Vec{x} \quad \text{s.t.} \quad \Vec{x}'\Vec{x} = 1
+    \end{align*}
+    Applying the Lagrange multiplier method, we know that: 
+    \begin{align*}
+        \exists \lambda^* \in \mathbb{R} \land \Vec{x}^* \in \mathbb{R}^p:
+        \nabla f(\Vec{x}^*) = \lambda^* \nabla g(\Vec{x}^*)
+        \implies
+        \Vec{x}^* = \argmin_{\Vec{x} \in \mathbb{R}^p} \Vec{x}'\Mat{A}\Vec{x} \quad \text{s.t.} \quad \Vec{x}'\Vec{x} = 1
+    \end{align*}
+    where $f(\Vec{x}) = \Vec{x}'\Mat{A}\Vec{x}$ and $g(\Vec{x}) = \Vec{x}'\Vec{x} - 1$. Then, by the FOC, we have:
+    \begin{align*}
+        \nabla f(\Vec{x}^*) = \lambda^* \nabla g(\Vec{x}^*)
+        \implies
+        2\Mat{A}\Vec{x}^* = 2\lambda^* \Vec{x}^*
+        \implies
+        \Mat{A}\Vec{x}^* = \lambda^* \Vec{x}^*
+    \end{align*}
+    Thus, $\lambda^*$ is an eigenvalue of $\Mat{A}$ and $\Vec{x}^*$ is an eigenvector of $\Mat{A}$.
+
+    Also, substituting $\Vec{x}^*$ and $\lambda^*$ into $f(\Vec{x}) = \Vec{x}'\Mat{A}\Vec{x}$, and knowing that $\lambda_1 \leq \lambda_2 \leq \ldots \leq \lambda_p$, we have:
+    \begin{align*}
+        \lambda_1 = \Vec{x}_1'\Mat{A}\Vec{x}_1 \geq \Vec{x'}^*  \Mat{A} \Vec{x}^* = \lambda^* \Vec{x'}^* \Vec{x}^* = \lambda^* \implies \lambda_1 = \lambda^*
+    \end{align*}
+
+    Proving that $\lambda^*$ is the smallest eigenvalue of $\Mat{A}$. By repeating the same process for the remaining $p-1$ eigenvalues, we can prove the theorem.
+
+    In general, the pairs $(\lambda_j, \Vec{x}_j)$ in $j = 1, \ldots, p$, can be found by solving the following optimization problem:
+
+    \begin{align*}
+        \Vec{x}_j = \argmin_{\Vec{x}_j \in \mathbb{R}^p} \Vec{x}'\Mat{A}\Vec{x} \quad \text{s.t.} \quad \Vec{x}'\Vec{x} = 1, \quad \Vec{x}'\Vec{x}_i = 0, \quad \forall i = 1, \ldots, j-1
+    \end{align*}
+\end{proof}

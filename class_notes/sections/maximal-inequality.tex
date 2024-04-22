@@ -98,9 +98,31 @@ Simplifying the expression, we have:
 &\leq
 \sum_{j = 1}^{p} 2 \Exp{- \ln p} \Exp{- \ln \frac{2}{\varepsilon}} \\
 %%%%%%%%%%
+\prob{
+    \max_{1 \leq j \leq p}{
+        \left|
+            \frac{1}{n} \sum_{i=1}^{n} X_{i,j} - \mu_{j}
+        \right|
+    }
+    \geq
+    a \sqrt{2} \sqrt{
+        \dfrac{\ln p + \ln \frac{2}{\varepsilon}}{n}
+    }
+}
 &\leq
 \sum_{j = 1}^{p} 2 \Exp{\ln \frac{1}{p}} \Exp{\ln \frac{\varepsilon}{2}} \\
 %%%%%%%%%%
+\prob{
+    \max_{1 \leq j \leq p}{
+        \left|
+            \frac{1}{n} \sum_{i=1}^{n} X_{i,j} - \mu_{j}
+        \right|
+    }
+    \geq
+    a \sqrt{2} \sqrt{
+        \dfrac{\ln p + \ln \frac{2}{\varepsilon}}{n}
+    }
+}
 &\leq
 \dfrac{2 p \varepsilon}{ 2 p}
 \end{align*}

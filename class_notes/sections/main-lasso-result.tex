@@ -34,7 +34,7 @@ then, the following inequalities hold:
 \dfrac{\lambda S}{k_{\bar{c}}}\\
 \end{align*}
 
-where $\hat{c} = \dfrac{c+1}{c-1}$
+where $\bar{c} = \dfrac{c+1}{c-1}$
 \end{theorem}
 
 Recall the linear regression:
@@ -80,3 +80,281 @@ For all $\lambda$ which satisfies the condition of theorem \ref{thm:main-lasso-r
 
 Where $\|\delta\|_{2, n}^2 = \mse{\Mat{X}\hat{\beta}}$.
 \end{claim}
+
+
+\begin{proof}[Proof of Claim \ref{claim:lasso-claim-2}]
+\label{proof:claim-lasso-claim-2}
+The LASSO estimator (equation \ref{eq:lasso-estimator}) is the solution of the minimization problem. Then:
+
+\begin{align*}
+    \dfrac{1}{n} \|\Vec{Y} - \Mat{X} \hat{\beta}\|_{2}^{2} +
+    \lambda \|\hat{\beta}\|_{1} 
+    &\leq
+    \dfrac{1}{n} \|\Vec{Y} - \Mat{X} \beta\|_{2}^{2} +
+    \lambda \|\beta\|_{1}\\
+    %%%%%
+    \dfrac{1}{n} \|\Mat{X}\beta + \epsilon - \Mat{X} \hat{\beta}\|_{2}^{2} +
+    \lambda \|\hat{\beta}\|_{1} 
+    &\leq
+    \dfrac{1}{n} \|\Mat{X}\beta + \epsilon - \Mat{X} \beta\|_{2}^{2} +
+    \lambda \|\beta\|_{1}\\
+    %%%%%
+    \dfrac{1}{n} \|\epsilon - \Mat{X} \delta \|_{2}^{2} +
+    \lambda \|\hat{\beta}\|_{1} 
+    &\leq
+    \dfrac{1}{n} \|\epsilon\|_{2}^{2} +
+    \lambda \|\beta\|_{1}
+\end{align*}
+Expanding the cuadratic norm on the left side:
+\begin{align*}
+    \dfrac{1}{n} \|\epsilon\|_{2}^{2} - 
+    \dfrac{2}{n} \epsilon' \Mat{X} \delta +
+    \dfrac{1}{n} \|\Mat{X} \delta\|_{2}^{2} +
+    \lambda \|\hat{\beta}\|_{1} 
+    &\leq
+    \dfrac{1}{n} \|\epsilon\|_{2}^{2} +
+    \lambda \|\beta\|_{1}\\
+    %%%%%
+    \dfrac{1}{n} \|\Mat{X} \delta\|_{2}^{2}
+    &\leq
+    \dfrac{2}{n} \epsilon' \Mat{X} \delta +
+    \lambda \|\beta\|_{1} -
+    \lambda \|\hat{\beta}\|_{1}\\
+    %%%%%
+    \|\delta\|_{2, n}^{2}
+    &\leq
+    \dfrac{2}{n} \epsilon' \Mat{X} \delta +
+    \lambda \|\beta\|_{1} -
+    \lambda \|\hat{\beta}\|_{1}
+    \leq
+    \left|\dfrac{2}{n} \epsilon' \Mat{X} \delta\right| +
+    \lambda \|\beta\|_{1} -
+    \lambda \|\hat{\beta}\|_{1}
+\end{align*} 
+We define $\mathcal{S} = \frac{1}{n} \epsilon'\Mat{X}$ and, by the Asymmetric H\"older inequality, we have:
+\begin{align*}
+    |\mathcal{S}' \delta| \leq \|\mathcal{S}\|_{\infty} \|\delta\|_{1}
+\end{align*}
+where $\|\mathcal{S}\|_{\infty} = \max_{1 \leq j \leq p} \left| \sum_{i=1}^{n} X_{i,j} \varepsilon_i \right| = \max_{1 \leq j \leq p} \left| \Vec{X}_{(j)}' \epsilon \right|$.
+
+Substituting this inequality in the previous expression:
+\begin{align*}
+    \|\delta\|_{2, n}^{2}
+    &\leq
+    \left|2 \mathcal{S}' \delta\right| +
+    \lambda \|\beta\|_{1} -
+    \lambda \|\hat{\beta}\|_{1}
+    \leq
+    2 \|\mathcal{S}\|_{\infty} \|\delta\|_{1} +
+    \lambda \|\beta\|_{1} -
+    \lambda \|\hat{\beta}\|_{1}
+\end{align*}
+Because we asume that $\lambda$ satisfies the condition of theorem \ref{thm:main-lasso-result}, we have:
+\begin{align*}
+    \|\mathcal{S}\|_{\infty} &\leq \dfrac{\lambda}{2c}
+\end{align*}
+Substituting in the previous result:
+\begin{align*}
+    \|\delta\|_{2, n}^{2}
+    &\leq
+    2 \|\mathcal{S}\|_{\infty} \|\delta\|_{1} +
+    \lambda \|\beta\|_{1} -
+    \lambda \|\hat{\beta}\|_{1} 
+    \leq
+    2 \dfrac{\lambda}{2c} \|\delta\|_{1} +
+    \lambda \|\beta\|_{1} -
+    \lambda \|\hat{\beta}\|_{1}\\
+%%%%%
+    \|\delta\|_{2, n}^{2}
+    &\leq
+    \dfrac{\lambda}{c} \|\delta\|_{1} +
+    \lambda \|\beta\|_{1} -
+    \lambda \|\hat{\beta}\|_{1}\\
+%%%%%
+    \|\delta\|_{2, n}^{2}
+    &\leq
+    \dfrac{\lambda}{c} \|\delta_T\|_{1} +
+    \dfrac{\lambda}{c} \|\delta_{T^{\complement}}\|_{1} +
+    \lambda \left(
+        \|\beta\|_{1} -
+        \|\hat{\beta}\|_{1}
+    \right)\\
+%%%%%
+    \|\delta\|_{2, n}^{2}
+    &\leq
+    \dfrac{\lambda}{c} \|\delta_T\|_{1} +
+    \dfrac{\lambda}{c} \|\delta_{T^{\complement}}\|_{1} +
+    \lambda \left(
+        \|\beta_T\|_{1} -
+        \|\hat{\beta}_T + \hat{\beta}_{T^\complement}\|_{1}
+    \right)\\
+%%%%%
+    \|\delta\|_{2, n}^{2}
+    &\leq
+    \dfrac{\lambda}{c} \|\delta_T\|_{1} +
+    \dfrac{\lambda}{c} \|\delta_{T^{\complement}}\|_{1} +
+    \lambda \left(
+        \|\beta_T\|_{1} -
+        \|\hat{\beta}_T\|_{1} - 
+        \|\hat{\beta}_{T^\complement}\|_{1}
+    \right)\\
+\end{align*}
+By the triangle inequality:
+\begin{align*}
+    \|\delta\|_{2, n}^{2}
+    &\leq
+    \dfrac{\lambda}{c} \|\delta_T\|_{1} +
+    \dfrac{\lambda}{c} \|\delta_{T^{\complement}}\|_{1} +
+    \lambda \left(
+        \|\beta_T\|_{1} -
+        \|\hat{\beta}_T\|_{1} - 
+        \|\hat{\beta}_{T^\complement}\|_{1}
+    \right)
+    \leq
+    \dfrac{\lambda}{c} \|\delta_T\|_{1} +
+    \dfrac{\lambda}{c} \|\delta_{T^{\complement}}\|_{1} +
+    \lambda \left(
+        \|\beta_T - \hat{\beta}_T\|_{1} - 
+        \|\hat{\beta}_{T^\complement}\|_{1}
+    \right)\\
+%%%%%
+    \|\delta\|_{2, n}^{2}
+    &\leq
+    \dfrac{\lambda}{c} \|\delta_T\|_{1} +
+    \dfrac{\lambda}{c} \|\delta_{T^{\complement}}\|_{1} +
+    \lambda \left(
+        \|\beta_T - \hat{\beta}_T\|_{1} - 
+        \|\beta_{T^\complement} - \hat{\beta}_{T^\complement}\|_{1}
+    \right)\\
+%%%%%
+    \|\delta\|_{2, n}^{2}
+    &\leq
+    \dfrac{\lambda}{c} \|\delta_T\|_{1} +
+    \dfrac{\lambda}{c} \|\delta_{T^{\complement}}\|_{1} +
+    \lambda \left(
+        \|\delta_T\|_{1} - 
+        \|\delta_{T^\complement}\|_{1}
+    \right)\\
+%%%%%
+    \|\delta\|_{2, n}^{2}
+    &\leq
+    \lambda \left(
+        1 + \dfrac{1}{c}
+    \right) \|\delta_T\|_{1} -
+    \lambda \left(
+        1 - \dfrac{1}{c}
+    \right) \|\delta_{T^\complement}\|_{1}
+    \leq
+    \lambda \left(
+        1 + \dfrac{1}{c}
+    \right) \| \delta_T \|_{1}
+\end{align*}
+Therefore,
+\begin{align*}
+    \|\delta\|_{2, n}^{2}
+    \leq
+    \lambda \left(
+        1 + \dfrac{1}{c}
+    \right) \| \delta_T \|_{1}
+\end{align*}
+\end{proof}
+
+\begin{proof}[Proof of Claim \ref{claim:lasso-claim-1}]
+Following the proof \ref{proof:claim-lasso-claim-2} for the claim \ref{claim:lasso-claim-2}, we have that:
+
+\begin{align*}
+    \|\delta\|_{2, n}^{2}
+    &\leq
+    \lambda \left(
+        1 + \dfrac{1}{c}
+    \right) \|\delta_T\|_{1} -
+    \lambda \left(
+        1 - \dfrac{1}{c}
+    \right) \|\delta_{T^\complement}\|_{1}
+    \leq
+    \lambda \left(
+        1 + \dfrac{1}{c}
+    \right) \| \delta_T \|_{1}
+\end{align*}
+
+We know that $ 0 \leq \|\delta\|_{2, n}^{2}$, then:
+
+\begin{align*}
+    0
+    &\leq
+    \lambda \left(
+        1 + \dfrac{1}{c}
+    \right) \|\delta_T\|_{1} -
+    \lambda \left(
+        1 - \dfrac{1}{c}
+    \right) \|\delta_{T^\complement}\|_{1}
+    \leq
+    \lambda \left(
+        1 + \dfrac{1}{c}
+    \right) \| \delta_T \|_{1}\\
+%%%%%
+    \| \delta_{T^\complement} \|_{1}
+    &\leq 
+    \dfrac{1 - \frac{1}{c}}{1 + \frac{1}{c}} \| \delta_T \|_{1}\\
+%%%%%
+    \| \delta_{T^\complement} \|_{1}
+    &\leq 
+    \bar{c} \| \delta_T \|_{1}\\
+\end{align*}
+\end{proof}
+
+\begin{claim}
+If $\lambda$ satisfies the condition of theorem \ref{thm:main-lasso-result}, then the claims \ref{claim:lasso-claim-1} and \ref{claim:lasso-claim-2} implies the theorem \ref{thm:main-lasso-result}.
+\end{claim}
+\begin{proof}[Proof]
+    The claim \ref{claim:lasso-claim-1} implies that $\delta \in \mathcal{R}_{\bar{c}}$, where $\mathcal{R}_{\bar{c}} = \{\delta \in \mathbb{R}^p: \|\delta_{T^\complement}\| \leq \bar{c} \|\delta_T\|_1\|\}$. Also, it implies that \footnote{See appendix \ref{sec:notation-help-lasso} for the definition of $k_{\bar{c}}$}:
+    \begin{align*}
+        k_{\bar{c}} 
+        \leq
+        \dfrac{\sqrt{S} \|\delta\|_{2,n}}{\|\delta_T\|_1}
+        \implies
+        \|\delta_T\|_1
+        \leq
+        \dfrac{\sqrt{S} \|\delta\|_{2,n}}{k_{\bar{c}}}
+    \end{align*}
+    Substituting in the claim \ref{claim:lasso-claim-2}:
+    \begin{align*}
+        \|\delta\|_{2, n}^{2}
+        &\leq
+        \lambda \left(
+            1 + \dfrac{1}{c}
+        \right) \|\delta_T\|_{1}
+        \leq
+        \lambda \left(
+            1 + \dfrac{1}{c}
+        \right) \dfrac{\sqrt{S} \|\delta\|_{2,n}}{k_{\bar{c}}}\\
+        %%%%%
+        \|\delta\|_{2, n}
+        &\leq
+        \left(1 + \dfrac{1}{c}\right)
+        \dfrac{\lambda \sqrt{S}}{k_{\bar{c}}}
+    \end{align*}
+    Which is one of the inequalities of the theorem \ref{thm:main-lasso-result}. 
+
+    Knowing that $\delta = \delta_T + \delta_{T^\complement}$, and by the triangle inequality, $\|\delta\|_1 \leq \|\delta_T\|_1 + \|\delta_{T^\complement}\|_1$. Substituting in the claim \ref{claim:lasso-claim-1}:
+
+    \begin{align*}
+        \|\delta_T\|_1 + \|\delta_{T^\complement}\|_1
+        &\leq
+        \|\delta_T\|_1 + \bar{c} \|\delta_T\|_1\\
+    %%%%%
+        \|\delta_T\|_1 + \|\delta_{T^\complement}\|_1
+        &\leq
+        (1 + \bar{c}) \|\delta_T\|_1
+        \leq 
+        (1 + \bar{c}) \frac{\sqrt{S} \|\delta\|_{2, n}}{k_{\bar{c}}}
+        \leq 
+        (1 + \bar{c}) (1 + \frac{1}{c}) \frac{\lambda \sqrt{S}}{k_{\bar{c}}}\\
+    %%%%%
+        \|\delta\|_1
+        &\leq 
+        (1 + \bar{c}) (1 + \frac{1}{c}) \frac{\lambda S}{k_{\bar{c}}}
+    \end{align*}
+
+    Which is the other inequality of the theorem \ref{thm:main-lasso-result}.
+\end{proof}

@@ -55,6 +55,9 @@ Spectral theory refers to the study of the eigenvalues and eigenvectors of a mat
     In general, the pairs $(\lambda_j, \Vec{x}_j)$ in $j = 1, \ldots, p$, can be found by solving the following optimization problem:
 
     \begin{align*}
-        \Vec{x}_j = \argmin_{\Vec{x}_j \in \mathbb{R}^p} \Vec{x}'\Mat{A}\Vec{x} \quad \text{s.t.} \quad \Vec{x}'\Vec{x} = 1, \quad \Vec{x}'\Vec{x}_i = 0, \quad \forall i = 1, \ldots, j-1
+        \Vec{x}_j = \argmin_{\Vec{x}_j \in \mathbb{R}^p} 
+            \Vec{x}'\Mat{A}\Vec{x}
+        \quad \text{s.t.} \quad 
+        \Vec{x}'\Vec{x} = 1, \quad \Vec{x}'\Vec{x}_i = 0, \quad \forall i = 1, \ldots, j-1
     \end{align*}
 \end{proof}

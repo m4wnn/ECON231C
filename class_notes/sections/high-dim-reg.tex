@@ -3,10 +3,10 @@
 Consider the regression: 
 
 \begin{align*}
-    Y = \Vec{X}'\beta + \epsilon
+    Y = \Vec{X}'\Vec{\beta} + \epsilon
 \end{align*}
 
-Where $Y$ is a scalar, $\Vec{X}$ is a $p$-dimensional vector of regressors, $\beta$ is a $p$-dimensional vector of coefficients, and $\epsilon$ is a scalar error term. And suppose we have a random sample:
+Where $Y$ is a scalar, $\Vec{X}$ is a $p$-dimensional vector of regressors, $\Vec{\beta}$ is a $p$-dimensional vector of coefficients, and $\epsilon$ is a scalar error term. And suppose we have a random sample:
 
 \begin{align*}
     (\Vec{X}_1, Y_1), \cdots, (\Vec{X}_n, Y_n) \sim \text{i.i.d.} (\Vec{X}, Y)
@@ -21,7 +21,7 @@ We are interested in case where $p$ is large, meaning that: $p \sim n$, $p > n$ 
         The OLS linear regression estimator is given by:
 
         \begin{align*}
-            \hat{\beta} = (\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{Y}
+            \hat{\Vec{\beta}} = (\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{Y}
         \end{align*}
 
         Where $\Mat{X} = (\Vec{X_1}, \cdots, \Vec{X_n})'$ is the $n \times p$ design matrix, and $\Vec{Y} = (Y_1, \cdots, Y_n)'$ is the $n \times 1$ vector of dependent variables. 
@@ -76,7 +76,7 @@ then:
 \E{
     \frac{1}{n}
     \sum_{i=1}^{n} \left(\Vec{X}_i' 
-        (\hat{\beta}^{OLS} - \beta)
+        (\hat{\Vec{\beta}}^{OLS} - \Vec{\beta})
     \right)^2
 }
 =
@@ -88,29 +88,29 @@ then:
 Given the linear regression in matrix form:
 
 \begin{align*}
-    \Vec{Y} = \Mat{X}\beta + \varepsilon
+    \Vec{Y} = \Mat{X}\Vec{\beta} + \Vec{\epsilon}
 \end{align*}
 
-Where $\Vec{Y} = (Y_1, \cdots, Y_n)'$ and $\varepsilon = (\epsilon_1, \cdots, \epsilon_n)'$ are $n \times 1$ column vectors; $\beta = (\beta_1, \cdots, \beta_p)'$ is a $p \times 1$ column vector; and $\Mat{X} = (\Vec{X}_1, \cdots, \Vec{X}_n)'$ is a $n \times p$ matrix.
+Where $\Vec{Y} = (Y_1, \cdots, Y_n)'$ and $\Vec{\epsilon} = (\epsilon_1, \cdots, \epsilon_n)'$ are $n \times 1$ column vectors; $\Vec{\beta} = (\beta_1, \cdots, \beta_p)'$ is a $p \times 1$ column vector; and $\Mat{X} = (\Vec{X}_1, \cdots, \Vec{X}_n)'$ is a $n \times p$ matrix.
 
 Recall that the OLS linear estimator is given by:
 
 \begin{align*}
-    \hat{\beta}^{OLS} = (\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{Y}
+    \hat{\Vec{\beta}}^{OLS} = (\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{Y}
 \end{align*}
 
 Substituting the linear regression in matrix form into the OLS linear estimator we get:
 
 \begin{align*}
-    \hat{\beta}^{OLS} &= (\Mat{X}'\Mat{X})^{-1}\Mat{X}'(\Mat{X}\beta + \varepsilon) \\
-    \hat{\beta}^{OLS} - \beta &= (\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon \\
-    \Mat{X}(\hat{\beta}^{OLS} - \beta) &= \Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon \\
+    \hat{\Vec{\beta}}^{OLS} &= (\Mat{X}'\Mat{X})^{-1}\Mat{X}'(\Mat{X}\Vec{\beta} + \Vec{\epsilon}) \\
+    \hat{\Vec{\beta}}^{OLS} - \Vec{\beta} &= (\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{\epsilon} \\
+    \Mat{X}(\hat{\Vec{\beta}}^{OLS} - \Vec{\beta}) &= \Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{\epsilon} \\
 \end{align*}
 
 Where: 
 
 \begin{align*}
-    \Vec{e} = \widehat{\Vec{Y}} - \E{\Vec{Y} | X} = \Mat{X}(\hat{\beta}^{OLS} - \beta) 
+    \Vec{e} = \widehat{\Vec{Y}} - \E{\Vec{Y} | X} = \Mat{X}(\hat{\Vec{\beta}}^{OLS} - \Vec{\beta}) 
 \end{align*}
 
 Therefore, the expected value of the mean squared error for the OLS estimator is:
@@ -119,7 +119,7 @@ Therefore, the expected value of the mean squared error for the OLS estimator is
 \E{
     \frac{1}{n}
     \sum_{i=1}^{n} \left(\Vec{X}_i' 
-        (\hat{\beta}^{OLS} - \beta)
+        (\hat{\Vec{\beta}}^{OLS} - \Vec{\beta})
     \right)^2
 }
 &=
@@ -127,21 +127,21 @@ Therefore, the expected value of the mean squared error for the OLS estimator is
     \Vec{e}'\Vec{e}
 }\\
 &= \frac{1}{n} \E{
-    (\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon)'(\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon)
+    (\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{\epsilon})'(\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{\epsilon})
 }\\
 &= \frac{1}{n} \E{
-    \varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon
+    \Vec{\epsilon}'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{\epsilon}
 }\\
 \end{align*}
 \begin{align}
 \E{
     \frac{1}{n}
     \sum_{i=1}^{n} \left(\Vec{X}_i' 
-        (\hat{\beta}^{OLS} - \beta)
+        (\hat{\Vec{\beta}}^{OLS} - \Vec{\beta})
     \right)^2
 }
 &= \frac{1}{n} \E{
-    \varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon
+    \Vec{\epsilon}'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{\epsilon}
 }
 \label{eq:expected-value-mse}
 \end{align}
@@ -150,7 +150,7 @@ Therefore, the expected value of the mean squared error for the OLS estimator is
     If $\Mat{A}$ is a $n \times p$ matrix, and $\Mat{B}$  is a $p \times n$ matrix, then:
 
     \begin{align*}
-        \tr{AB} = \tr{BA}
+        \tr{\Mat{A}\Mat{B}} = \tr{\Mat{B}\Mat{A}}
     \end{align*}
 \end{lemma*}
 
@@ -158,10 +158,10 @@ The expected value in equation \ref{eq:expected-value-mse} is an scalar, therefo
 
 \begin{align*}
 \frac{1}{n} \E{
-    \varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon
+    \Vec{\epsilon}'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{\epsilon}
 }
 &= \frac{1}{n} \tr{\E{
-    \varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon
+    \Vec{\epsilon}'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{\epsilon}
 }}
 \end{align*}
 
@@ -169,16 +169,16 @@ Because the trace and the expected value are linear operators, we interchange th
 
 \begin{align*}
 \frac{1}{n} \E{
-    \varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon
+    \Vec{\epsilon}'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{\epsilon}
 }
 &= \frac{1}{n} \E{\tr{
-    \varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon
+    \Vec{\epsilon}'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{\epsilon}
 }} \\
 &= \frac{1}{n} \E{\tr{
-    \varepsilon\varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
+    \Vec{\epsilon}\Vec{\epsilon}'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
 }}\\
 &= \frac{1}{n} \tr{\E{
-    \varepsilon\varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
+    \Vec{\epsilon}\Vec{\epsilon}'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
 }}
 \end{align*}
 
@@ -186,13 +186,13 @@ By the law of iterated expectations:
 
 \begin{align*}
 \frac{1}{n} \E{
-    \varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon
+    \Vec{\epsilon}'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{\epsilon}
 }
 &= \frac{1}{n} \tr{\E{\E{
-    \varepsilon\varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
+    \Vec{\epsilon}\Vec{\epsilon}'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'
  | \Mat{X}} }}\\
 &= \frac{1}{n} \tr{\E{\E{
-    \varepsilon\varepsilon'| \Mat{X}} \Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'}}\\
+    \Vec{\epsilon}\Vec{\epsilon}'| \Mat{X}} \Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'}}\\
 &= \frac{1}{n} \tr{
         \E{
             \sigma^2 \Mat{I}_n
@@ -224,7 +224,7 @@ By the law of iterated expectations:
 
 \begin{align*}
 \frac{1}{n} \E{
-    \varepsilon'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\varepsilon
+    \Vec{\epsilon}'\Mat{X}(\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{\epsilon}
 }
 &= \frac{p\sigma^2}{n}\\
 \end{align*}

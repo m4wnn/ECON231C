@@ -35,7 +35,7 @@ Some common norms Defined in the vector space \(V = \mathbb{R}^p \) include:
 
     \item \textbf{Maximum norm} (or \(l_\infty\) norm):
     \begin{align*}
-        \|v\|_\infty = \max_{i=1}^n |v_i|
+        \|\Vec{v}\|_\infty = \max_{i=1}^n |v_i|
     \end{align*}
 
     \item \textbf{ \(l_2\) Prediction norm}:
@@ -60,11 +60,11 @@ Often the matrix $\Mat{X}$ is defined as the \emph(design matrix) in a linear re
 An specific case of the \emph{prediction norm} is in the context of linear regression, where:
 
 \[
-    \|\hat{\beta} - \beta\|_{2, n} 
+    \|\hat{\Vec{\beta}} - \Vec{\beta}\|_{2, n} 
     = 
     \sqrt{
         \frac{1}{n}
-        (\hat{\beta} - \beta)'\Mat{X}'\Mat{X}(\hat{\beta} - \beta)
+        (\hat{\Vec{\beta}} - \Vec{\beta})'\Mat{X}'\Mat{X}(\hat{\Vec{\beta}} - \Vec{\beta})
     }
 \]
 

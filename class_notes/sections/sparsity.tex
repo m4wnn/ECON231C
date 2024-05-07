@@ -3,31 +3,31 @@
 Given the linear regression model: 
 
 \begin{align*}
-    Y = \Vec{X}'\beta + \epsilon, \quad \E{\epsilon | \Vec{X}} = 0 
+    Y = \Vec{X}'\Vec{\beta} + \epsilon, \quad \E{\epsilon | \Vec{X}} = 0 
 \end{align*}
 
-where $Y$ is the response variable, $\Vec{X}$ is the $p$-dimensional feature vector, $\beta$ is the $p$-dimensional coefficient vector, and $\epsilon$ is the error term. We assume that $\epsilon$ is independent of $\Vec{X}$.
+where $Y$ is the response variable, $\Vec{X}$ is the $p$-dimensional feature vector, $\Vec{\beta}$ is the $p$-dimensional coefficient vector, and $\epsilon$ is the error term. We assume that $\epsilon$ is independent of $\Vec{X}$.
 
 \begin{def*}[Sparsity Index]
 \begin{align*}
 S &= \sum_{j=1}^p \indicator{\beta_j \neq 0} \\
-S &= ||\beta||_0
+S &= ||\Vec{\beta}||_0
 \end{align*}
 
-It is often called the $l_0$ norm of $\beta$, even though does not satisfy all the properties of a norm\footnote{See \hyperref[sec:norms]{Norms} in the appendix for more details.}.
+It is often called the $l_0$ norm of $\Vec{\beta}$, even though does not satisfy all the properties of a norm\footnote{See \hyperref[sec:norms]{Norms} in the appendix for more details.}.
 \end{def*}
 
 \begin{myanswerbox}
 We are going to assume that $S$ is small, i.e., $S \ll p$. This assumption is often referred to as the \textit{sparsity assumption}.
 \end{myanswerbox}
 
-A more relaxed version of the sparsity assumption is the \emph{approximate sparsity assumption}, where most $\beta_j$ are close to zero, but not exactly zero.
+A more relaxed version of the sparsity assumption is the \emph{approximate sparsity assumption}, where most $\Vec{\beta}_j$ are close to zero, but not exactly zero.
 
 \subsection{Best Subset Selection}
 
 \begin{align*}
-\hat{\beta} = \argmin_{b \in \mathbb{R}^p} 
-\frac{1}{n} \sum_{i=1}^n (Y_i - \Vec{X}_i'b)^2 + \lambda ||b||_0
+\hat{\Vec{\beta}} = \argmin_{\Vec{b} \in \mathbb{R}^p} 
+\frac{1}{n} \sum_{i=1}^n (Y_i - \Vec{X}_i'\Vec{b})^2 + \lambda ||\Vec{b}||_0
 \end{align*}
 
 where $\lambda$ is the penalty parameter, and $\lambda ||b||_0$ is the penalty term that encourages sparsity in the solution.
@@ -39,22 +39,22 @@ In order to solve this optimization problem, we need to consider all possible su
 Introduced by Tibshirani (1996), the LASSO estimator is defined as:
 
 \begin{align*}
-\hat{\beta} = \argmin_{b \in \mathbb{R}^p} 
-\frac{1}{n} \sum_{i=1}^n (Y_i - \Vec{X}_i'b)^2 + \lambda ||b||_1
+\hat{\Vec{\beta}} = \argmin_{\Vec{b} \in \mathbb{R}^p} 
+\frac{1}{n} \sum_{i=1}^n (Y_i - \Vec{X}_i'\Vec{b})^2 + \lambda ||\Vec{b}||_1
 \end{align*}
 
 \subsubsection{Main LASSO Result}
 
-If $\lambda$ is chosen appropriately, and some regularization conditions are satisfied (including sparsity), then the LASSO estimator $\hat{\beta}^{LASSO}$ satisfies:
+If $\lambda$ is chosen appropriately, and some regularization conditions are satisfied (including sparsity), then the LASSO estimator $\hat{\Vec{\beta}}^{LASSO}$ satisfies:
 
 \begin{align*}
-||\hat{\beta}^{LASSO} - \beta||_2 &\leq C \sqrt{\frac{S \ln P}{n}}
+||\hat{\Vec{\beta}}^{LASSO} - \Vec{\beta}||_2 &\leq C \sqrt{\frac{s \ln p}{n}}
 \end{align*} 
 
 and,
 
 \begin{align*}
-||\hat{\beta}^{LASSO} - \beta||_1 &\leq CS \sqrt{\frac{\ln P}{n}}
+||\hat{\Vec{\beta}}^{LASSO} - \Vec{\beta}||_1 &\leq CS \sqrt{\frac{\ln p}{n}}
 \end{align*} 
 
-with probability approaching 1, where $C$ is some constant. Intuitively, the LASSO estimator is consistent in terms of the $\ell_2$ norm, if $\dfrac{S \ln p}{n} \to 0$.
+with probability approaching 1, where $C$ is some constant. Intuitively, the LASSO estimator is consistent in terms of the $\ell_2$ norm, if $\dfrac{s \ln p}{n} \to 0$.

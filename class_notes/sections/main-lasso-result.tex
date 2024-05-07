@@ -11,24 +11,24 @@ $\forall c > 1$, if for some $\lambda > 0$:
 \begin{align*}
 \lambda > \dfrac{2c}{n}
 \max_{1 \leq j \leq p} \left|
-    \sum_{i=1}^{n}X_{i,j} \varepsilon_i
+    \sum_{i=1}^{n}X_{i,j} \epsilon_i
 \right|
 = 
 \dfrac{2c}{n}
 \max_{1 \leq j \leq p} \left|
-    \Vec{X}_{(j)}' \epsilon
+    \Vec{X}_{(j)}' \Vec{\epsilon}
 \right|
 \end{align*}
 
 then, the following inequalities hold:
 
 \begin{align*}
-\|\hat{\beta} - \beta\|_{2, n}
+\|\hat{\Vec{\beta}} - \Vec{\beta}\|_{2, n}
 &\leq 
 \left(1 + \dfrac{1}{c}\right)
 \dfrac{\lambda \sqrt{S}}{k_{\bar{c}}}\\
 %%%%%
-\|\hat{\beta} - \beta\|_{1}
+\|\hat{\Vec{\beta}} - \Vec{\beta}\|_{1}
 &\leq 
 \left(1 + \bar{c}\right) \left(1 + \dfrac{1}{c}\right)
 \dfrac{\lambda S}{k_{\bar{c}}}\\
@@ -40,14 +40,14 @@ where $\bar{c} = \dfrac{c+1}{c-1}$
 Recall the linear regression:
 
 \begin{align}
-    \Vec{Y} = \Mat{X} \beta + \epsilon
+    \Vec{Y} = \Mat{X} \Vec{\beta} + \Vec{\epsilon}
     \label{eq:linear-regression}
 \end{align}
 
 The \emph{LASSO} estimator is defined as:
 
 \begin{align}
-\hat{\beta} 
+\hat{\Vec{\beta}} 
 =  \argmin_{b \in \mathbb{R}^p} 
     \dfrac{1}{n} \sum_{i=1}^{n} (Y_i - \Vec{X}_i' b)^2
     + \lambda \sum_{j=1}^{p} |b_j|
@@ -57,7 +57,7 @@ The \emph{LASSO} estimator is defined as:
 \label{eq:lasso-estimator}
 \end{align}
 
-And lets denote $\delta = \hat{\beta} - \beta \in \mathbb{R}^p$.
+And lets denote $\Vec{\delta} = \hat{\Vec{\beta}} - \Vec{\beta} \in \mathbb{R}^p$.
 
 We are intending to prove the main Lasso result (theorem \ref{thm:main-lasso-result}). In order to do so, we will introduce the following claims that, when combined, are sufficient to prove the theorem.
 
@@ -66,7 +66,7 @@ We are intending to prove the main Lasso result (theorem \ref{thm:main-lasso-res
 For all $\lambda$ which satisfies the condition of theorem \ref{thm:main-lasso-result}, the following inequality holds:
 
 \begin{align*}
-\|\delta_{T^{\complement}}\|_1 \leq \bar{c} \|\delta_{T}\|_1
+\|\Vec{\delta}_{T^{\complement}}\|_1 \leq \bar{c} \|\Vec{\delta}_{T}\|_1
 \end{align*}
 \end{claim}
 
@@ -75,10 +75,10 @@ For all $\lambda$ which satisfies the condition of theorem \ref{thm:main-lasso-r
 For all $\lambda$ which satisfies the condition of theorem \ref{thm:main-lasso-result}, the following inequality holds:
 
 \begin{align*}
-\|\delta\|_{2, n}^2 \leq \left(1 + \dfrac{1}{c}\right) \lambda \|\delta_T\|_1
+\|\Vec{\delta}\|_{2, n}^2 \leq \left(1 + \dfrac{1}{c}\right) \lambda \|\Vec{\delta}_T\|_1
 \end{align*}
 
-Where $\|\delta\|_{2, n}^2 = \mse{\Mat{X}\hat{\beta}}$.
+Where $\|\Vec{\delta}\|_{2, n}^2 = \mse{\Mat{X}\hat{\Vec{\beta}}}$.
 \end{claim}
 
 
@@ -87,67 +87,67 @@ Where $\|\delta\|_{2, n}^2 = \mse{\Mat{X}\hat{\beta}}$.
 The LASSO estimator (equation \ref{eq:lasso-estimator}) is the solution of the minimization problem. Then:
 
 \begin{align*}
-    \dfrac{1}{n} \|\Vec{Y} - \Mat{X} \hat{\beta}\|_{2}^{2} +
-    \lambda \|\hat{\beta}\|_{1} 
+    \dfrac{1}{n} \|\Vec{Y} - \Mat{X} \hat{\Vec{\beta}}\|_{2}^{2} +
+    \lambda \|\hat{\Vec{\beta}}\|_{1} 
     &\leq
-    \dfrac{1}{n} \|\Vec{Y} - \Mat{X} \beta\|_{2}^{2} +
-    \lambda \|\beta\|_{1}\\
+    \dfrac{1}{n} \|\Vec{Y} - \Mat{X} \Vec{\beta}\|_{2}^{2} +
+    \lambda \|\Vec{\beta}\|_{1}\\
     %%%%%
-    \dfrac{1}{n} \|\Mat{X}\beta + \epsilon - \Mat{X} \hat{\beta}\|_{2}^{2} +
-    \lambda \|\hat{\beta}\|_{1} 
+    \dfrac{1}{n} \|\Mat{X}\Vec{\beta} + \Vec{\epsilon} - \Mat{X} \hat{\Vec{\beta}}\|_{2}^{2} +
+    \lambda \|\hat{\Vec{\beta}}\|_{1} 
     &\leq
-    \dfrac{1}{n} \|\Mat{X}\beta + \epsilon - \Mat{X} \beta\|_{2}^{2} +
-    \lambda \|\beta\|_{1}\\
+    \dfrac{1}{n} \|\Mat{X}\Vec{\beta} + \Vec{\epsilon} - \Mat{X} \Vec{\beta}\|_{2}^{2} +
+    \lambda \|\Vec{\beta}\|_{1}\\
     %%%%%
-    \dfrac{1}{n} \|\epsilon - \Mat{X} \delta \|_{2}^{2} +
-    \lambda \|\hat{\beta}\|_{1} 
+    \dfrac{1}{n} \|\Vec{\epsilon} - \Mat{X} \Vec{\delta} \|_{2}^{2} +
+    \lambda \|\hat{\Vec{\beta}}\|_{1} 
     &\leq
-    \dfrac{1}{n} \|\epsilon\|_{2}^{2} +
-    \lambda \|\beta\|_{1}
+    \dfrac{1}{n} \|\Vec{\epsilon}\|_{2}^{2} +
+    \lambda \|\Vec{\beta}\|_{1}
 \end{align*}
 Expanding the cuadratic norm on the left side:
 \begin{align*}
-    \dfrac{1}{n} \|\epsilon\|_{2}^{2} - 
-    \dfrac{2}{n} \epsilon' \Mat{X} \delta +
-    \dfrac{1}{n} \|\Mat{X} \delta\|_{2}^{2} +
-    \lambda \|\hat{\beta}\|_{1} 
+    \dfrac{1}{n} \|\Vec{\epsilon}\|_{2}^{2} - 
+    \dfrac{2}{n} \Vec{\epsilon}' \Mat{X} \Vec{\delta} +
+    \dfrac{1}{n} \|\Mat{X} \Vec{\delta}\|_{2}^{2} +
+    \lambda \|\hat{\Vec{\beta}}\|_{1} 
     &\leq
-    \dfrac{1}{n} \|\epsilon\|_{2}^{2} +
-    \lambda \|\beta\|_{1}\\
+    \dfrac{1}{n} \|\Vec{\epsilon}\|_{2}^{2} +
+    \lambda \|\Vec{\beta}\|_{1}\\
     %%%%%
-    \dfrac{1}{n} \|\Mat{X} \delta\|_{2}^{2}
+    \dfrac{1}{n} \|\Mat{X} \Vec{\delta}\|_{2}^{2}
     &\leq
-    \dfrac{2}{n} \epsilon' \Mat{X} \delta +
-    \lambda \|\beta\|_{1} -
-    \lambda \|\hat{\beta}\|_{1}\\
+    \dfrac{2}{n} \Vec{\epsilon}' \Mat{X} \Vec{\delta} +
+    \lambda \|\Vec{\beta}\|_{1} -
+    \lambda \|\hat{\Vec{\beta}}\|_{1}\\
     %%%%%
-    \|\delta\|_{2, n}^{2}
+    \|\Vec{\delta}\|_{2, n}^{2}
     &\leq
-    \dfrac{2}{n} \epsilon' \Mat{X} \delta +
-    \lambda \|\beta\|_{1} -
-    \lambda \|\hat{\beta}\|_{1}
+    \dfrac{2}{n} \Vec{\epsilon}' \Mat{X} \Vec{\delta} +
+    \lambda \|\Vec{\beta}\|_{1} -
+    \lambda \|\hat{\Vec{\beta}}\|_{1}
     \leq
-    \left|\dfrac{2}{n} \epsilon' \Mat{X} \delta\right| +
-    \lambda \|\beta\|_{1} -
-    \lambda \|\hat{\beta}\|_{1}
+    \left|\dfrac{2}{n} \Vec{\epsilon}' \Mat{X} \Vec{\delta}\right| +
+    \lambda \|\Vec{\beta}\|_{1} -
+    \lambda \|\hat{\Vec{\beta}}\|_{1}
 \end{align*} 
-We define $\mathcal{S} = \frac{1}{n} \epsilon'\Mat{X}$ and, by the Asymmetric H\"older inequality, we have:
+We define $\mathcal{S} = \frac{1}{n} \Vec{\epsilon}'\Mat{X}$ and, by the Asymmetric H\"older inequality, we have:
 \begin{align*}
-    |\mathcal{S}' \delta| \leq \|\mathcal{S}\|_{\infty} \|\delta\|_{1}
+    |\mathcal{S}' \Vec{\delta}| \leq \|\mathcal{S}\|_{\infty} \|\Vec{\delta}\|_{1}
 \end{align*}
-where $\|\mathcal{S}\|_{\infty} = \max_{1 \leq j \leq p} \left| \sum_{i=1}^{n} X_{i,j} \varepsilon_i \right| = \max_{1 \leq j \leq p} \left| \Vec{X}_{(j)}' \epsilon \right|$.
+where $\|\mathcal{S}\|_{\infty} = \max_{1 \leq j \leq p} \left| \sum_{i=1}^{n} X_{i,j} \epsilon_i \right| = \max_{1 \leq j \leq p} \left| \Vec{X}_{(j)}' \Vec{\epsilon} \right|$.
 
 Substituting this inequality in the previous expression:
 \begin{align*}
-    \|\delta\|_{2, n}^{2}
+    \|\Vec{\delta}\|_{2, n}^{2}
     &\leq
-    \left|2 \mathcal{S}' \delta\right| +
-    \lambda \|\beta\|_{1} -
-    \lambda \|\hat{\beta}\|_{1}
+    \left|2 \mathcal{S}' \Vec{\delta}\right| +
+    \lambda \|\Vec{\beta}\|_{1} -
+    \lambda \|\hat{\Vec{\beta}}\|_{1}
     \leq
-    2 \|\mathcal{S}\|_{\infty} \|\delta\|_{1} +
-    \lambda \|\beta\|_{1} -
-    \lambda \|\hat{\beta}\|_{1}
+    2 \|\mathcal{S}\|_{\infty} \|\Vec{\delta}\|_{1} +
+    \lambda \|\Vec{\beta}\|_{1} -
+    \lambda \|\hat{\Vec{\beta}}\|_{1}
 \end{align*}
 Because we asume that $\lambda$ satisfies the condition of theorem \ref{thm:main-lasso-result}, we have:
 \begin{align*}
@@ -155,107 +155,107 @@ Because we asume that $\lambda$ satisfies the condition of theorem \ref{thm:main
 \end{align*}
 Substituting in the previous result:
 \begin{align*}
-    \|\delta\|_{2, n}^{2}
+    \|\Vec{\delta}\|_{2, n}^{2}
     &\leq
-    2 \|\mathcal{S}\|_{\infty} \|\delta\|_{1} +
-    \lambda \|\beta\|_{1} -
-    \lambda \|\hat{\beta}\|_{1} 
+    2 \|\mathcal{S}\|_{\infty} \|\Vec{\delta}\|_{1} +
+    \lambda \|\Vec{\beta}\|_{1} -
+    \lambda \|\hat{\Vec{\beta}}\|_{1} 
     \leq
-    2 \dfrac{\lambda}{2c} \|\delta\|_{1} +
-    \lambda \|\beta\|_{1} -
-    \lambda \|\hat{\beta}\|_{1}\\
+    2 \dfrac{\lambda}{2c} \|\Vec{\delta}\|_{1} +
+    \lambda \|\Vec{\beta}\|_{1} -
+    \lambda \|\hat{\Vec{\beta}}\|_{1}\\
 %%%%%
-    \|\delta\|_{2, n}^{2}
+    \|\Vec{\delta}\|_{2, n}^{2}
     &\leq
-    \dfrac{\lambda}{c} \|\delta\|_{1} +
-    \lambda \|\beta\|_{1} -
-    \lambda \|\hat{\beta}\|_{1}\\
+    \dfrac{\lambda}{c} \|\Vec{\delta}\|_{1} +
+    \lambda \|\Vec{\beta}\|_{1} -
+    \lambda \|\hat{\Vec{\beta}}\|_{1}\\
 %%%%%
-    \|\delta\|_{2, n}^{2}
+    \|\Vec{\delta}\|_{2, n}^{2}
     &\leq
-    \dfrac{\lambda}{c} \|\delta_T\|_{1} +
-    \dfrac{\lambda}{c} \|\delta_{T^{\complement}}\|_{1} +
+    \dfrac{\lambda}{c} \|\Vec{\delta}_T\|_{1} +
+    \dfrac{\lambda}{c} \|\Vec{\delta}_{T^{\complement}}\|_{1} +
     \lambda \left(
-        \|\beta\|_{1} -
-        \|\hat{\beta}\|_{1}
+        \|\Vec{\beta}\|_{1} -
+        \|\hat{\Vec{\beta}}\|_{1}
     \right)\\
 %%%%%
-    \|\delta\|_{2, n}^{2}
+    \|\Vec{\delta}\|_{2, n}^{2}
     &\leq
-    \dfrac{\lambda}{c} \|\delta_T\|_{1} +
-    \dfrac{\lambda}{c} \|\delta_{T^{\complement}}\|_{1} +
+    \dfrac{\lambda}{c} \|\Vec{\delta}_T\|_{1} +
+    \dfrac{\lambda}{c} \|\Vec{\delta}_{T^{\complement}}\|_{1} +
     \lambda \left(
-        \|\beta_T\|_{1} -
-        \|\hat{\beta}_T + \hat{\beta}_{T^\complement}\|_{1}
+        \|\Vec{\beta}_T\|_{1} -
+        \|\hat{\Vec{\beta}}_T + \hat{\Vec{\beta}}_{T^\complement}\|_{1}
     \right)\\
 %%%%%
-    \|\delta\|_{2, n}^{2}
+    \|\Vec{\delta}\|_{2, n}^{2}
     &\leq
-    \dfrac{\lambda}{c} \|\delta_T\|_{1} +
-    \dfrac{\lambda}{c} \|\delta_{T^{\complement}}\|_{1} +
+    \dfrac{\lambda}{c} \|\Vec{\delta}_T\|_{1} +
+    \dfrac{\lambda}{c} \|\Vec{\delta}_{T^{\complement}}\|_{1} +
     \lambda \left(
-        \|\beta_T\|_{1} -
-        \|\hat{\beta}_T\|_{1} - 
-        \|\hat{\beta}_{T^\complement}\|_{1}
+        \|\Vec{\beta}_T\|_{1} -
+        \|\hat{\Vec{\beta}}_T\|_{1} - 
+        \|\hat{\Vec{\beta}}_{T^\complement}\|_{1}
     \right)\\
 \end{align*}
 By the triangle inequality:
 \begin{align*}
-    \|\delta\|_{2, n}^{2}
+    \|\Vec{\delta}\|_{2, n}^{2}
     &\leq
-    \dfrac{\lambda}{c} \|\delta_T\|_{1} +
-    \dfrac{\lambda}{c} \|\delta_{T^{\complement}}\|_{1} +
+    \dfrac{\lambda}{c} \|\Vec{\delta}_T\|_{1} +
+    \dfrac{\lambda}{c} \|\Vec{\delta}_{T^{\complement}}\|_{1} +
     \lambda \left(
-        \|\beta_T\|_{1} -
-        \|\hat{\beta}_T\|_{1} - 
-        \|\hat{\beta}_{T^\complement}\|_{1}
+        \|\Vec{\beta}_T\|_{1} -
+        \|\hat{\Vec{\beta}}_T\|_{1} - 
+        \|\hat{\Vec{\beta}}_{T^\complement}\|_{1}
     \right)
     \leq
-    \dfrac{\lambda}{c} \|\delta_T\|_{1} +
-    \dfrac{\lambda}{c} \|\delta_{T^{\complement}}\|_{1} +
+    \dfrac{\lambda}{c} \|\Vec{\delta}_T\|_{1} +
+    \dfrac{\lambda}{c} \|\Vec{\delta}_{T^{\complement}}\|_{1} +
     \lambda \left(
-        \|\beta_T - \hat{\beta}_T\|_{1} - 
-        \|\hat{\beta}_{T^\complement}\|_{1}
+        \|\Vec{\beta}_T - \hat{\Vec{\beta}}_T\|_{1} - 
+        \|\hat{\Vec{\beta}}_{T^\complement}\|_{1}
     \right)\\
 %%%%%
-    \|\delta\|_{2, n}^{2}
+    \|\Vec{\delta}\|_{2, n}^{2}
     &\leq
-    \dfrac{\lambda}{c} \|\delta_T\|_{1} +
-    \dfrac{\lambda}{c} \|\delta_{T^{\complement}}\|_{1} +
+    \dfrac{\lambda}{c} \|\Vec{\delta}_T\|_{1} +
+    \dfrac{\lambda}{c} \|\Vec{\delta}_{T^{\complement}}\|_{1} +
     \lambda \left(
-        \|\beta_T - \hat{\beta}_T\|_{1} - 
-        \|\beta_{T^\complement} - \hat{\beta}_{T^\complement}\|_{1}
+        \|\Vec{\beta}_T - \hat{\Vec{\beta}}_T\|_{1} - 
+        \|\Vec{\beta}_{T^\complement} - \hat{\Vec{\beta}}_{T^\complement}\|_{1}
     \right)\\
 %%%%%
-    \|\delta\|_{2, n}^{2}
+    \|\Vec{\delta}\|_{2, n}^{2}
     &\leq
-    \dfrac{\lambda}{c} \|\delta_T\|_{1} +
-    \dfrac{\lambda}{c} \|\delta_{T^{\complement}}\|_{1} +
+    \dfrac{\lambda}{c} \|\Vec{\delta}_T\|_{1} +
+    \dfrac{\lambda}{c} \|\Vec{\delta}_{T^{\complement}}\|_{1} +
     \lambda \left(
-        \|\delta_T\|_{1} - 
-        \|\delta_{T^\complement}\|_{1}
+        \|\Vec{\delta}_T\|_{1} - 
+        \|\Vec{\delta}_{T^\complement}\|_{1}
     \right)\\
 %%%%%
-    \|\delta\|_{2, n}^{2}
+    \|\Vec{\delta}\|_{2, n}^{2}
     &\leq
     \lambda \left(
         1 + \dfrac{1}{c}
-    \right) \|\delta_T\|_{1} -
+    \right) \|\Vec{\delta}_T\|_{1} -
     \lambda \left(
         1 - \dfrac{1}{c}
-    \right) \|\delta_{T^\complement}\|_{1}
+    \right) \|\Vec{\delta}_{T^\complement}\|_{1}
     \leq
     \lambda \left(
         1 + \dfrac{1}{c}
-    \right) \| \delta_T \|_{1}
+    \right) \| \Vec{\delta}_T \|_{1}
 \end{align*}
 Therefore,
 \begin{align*}
-    \|\delta\|_{2, n}^{2}
+    \|\Vec{\delta}\|_{2, n}^{2}
     \leq
     \lambda \left(
         1 + \dfrac{1}{c}
-    \right) \| \delta_T \|_{1}
+    \right) \| \Vec{\delta}_T \|_{1}
 \end{align*}
 \end{proof}
 
@@ -263,43 +263,43 @@ Therefore,
 Following the proof \ref{proof:claim-lasso-claim-2} for the claim \ref{claim:lasso-claim-2}, we have that:
 
 \begin{align*}
-    \|\delta\|_{2, n}^{2}
+    \|\Vec{\delta}\|_{2, n}^{2}
     &\leq
     \lambda \left(
         1 + \dfrac{1}{c}
-    \right) \|\delta_T\|_{1} -
+    \right) \|\Vec{\delta}_T\|_{1} -
     \lambda \left(
         1 - \dfrac{1}{c}
-    \right) \|\delta_{T^\complement}\|_{1}
+    \right) \|\Vec{\delta}_{T^\complement}\|_{1}
     \leq
     \lambda \left(
         1 + \dfrac{1}{c}
-    \right) \| \delta_T \|_{1}
+    \right) \| \Vec{\delta}_T \|_{1}
 \end{align*}
 
-We know that $ 0 \leq \|\delta\|_{2, n}^{2}$, then:
+We know that $ 0 \leq \|\Vec{\delta}\|_{2, n}^{2}$, then:
 
 \begin{align*}
     0
     &\leq
     \lambda \left(
         1 + \dfrac{1}{c}
-    \right) \|\delta_T\|_{1} -
+    \right) \|\Vec{\delta}_T\|_{1} -
     \lambda \left(
         1 - \dfrac{1}{c}
-    \right) \|\delta_{T^\complement}\|_{1}
+    \right) \|\Vec{\delta}_{T^\complement}\|_{1}
     \leq
     \lambda \left(
         1 + \dfrac{1}{c}
-    \right) \| \delta_T \|_{1}\\
+    \right) \| \Vec{\delta}_T \|_{1}\\
 %%%%%
-    \| \delta_{T^\complement} \|_{1}
+    \| \Vec{\delta}_{T^\complement} \|_{1}
     &\leq 
-    \dfrac{1 - \frac{1}{c}}{1 + \frac{1}{c}} \| \delta_T \|_{1}\\
+    \dfrac{1 - \frac{1}{c}}{1 + \frac{1}{c}} \| \Vec{\delta}_T \|_{1}\\
 %%%%%
-    \| \delta_{T^\complement} \|_{1}
+    \| \Vec{\delta}_{T^\complement} \|_{1}
     &\leq 
-    \bar{c} \| \delta_T \|_{1}\\
+    \bar{c} \| \Vec{\delta}_T \|_{1}\\
 \end{align*}
 \end{proof}
 
@@ -307,51 +307,51 @@ We know that $ 0 \leq \|\delta\|_{2, n}^{2}$, then:
 If $\lambda$ satisfies the condition of theorem \ref{thm:main-lasso-result}, then the claims \ref{claim:lasso-claim-1} and \ref{claim:lasso-claim-2} implies the theorem \ref{thm:main-lasso-result}.
 \end{claim}
 \begin{proof}[Proof]
-    The claim \ref{claim:lasso-claim-1} implies that $\delta \in \mathcal{R}_{\bar{c}}$, where $\mathcal{R}_{\bar{c}} = \{\delta \in \mathbb{R}^p: \|\delta_{T^\complement}\| \leq \bar{c} \|\delta_T\|_1\|\}$. Also, it implies that \footnote{See appendix \ref{sec:notation-help-lasso} for the definition of $k_{\bar{c}}$}:
+    The claim \ref{claim:lasso-claim-1} implies that $\Vec{\delta} \in \mathcal{R}_{\bar{c}}$, where $\mathcal{R}_{\bar{c}} = \{\Vec{\delta} \in \mathbb{R}^p: \|\Vec{\delta}_{T^\complement}\| \leq \bar{c} \|\Vec{\delta}_T\|_1\|\}$. Also, it implies that \footnote{See appendix \ref{sec:notation-help-lasso} for the definition of $k_{\bar{c}}$}:
     \begin{align*}
         k_{\bar{c}} 
         \leq
-        \dfrac{\sqrt{S} \|\delta\|_{2,n}}{\|\delta_T\|_1}
+        \dfrac{\sqrt{S} \|\Vec{\delta}\|_{2,n}}{\|\Vec{\delta}_T\|_1}
         \implies
-        \|\delta_T\|_1
+        \|\Vec{\delta}_T\|_1
         \leq
-        \dfrac{\sqrt{S} \|\delta\|_{2,n}}{k_{\bar{c}}}
+        \dfrac{\sqrt{S} \|\Vec{\delta}\|_{2,n}}{k_{\bar{c}}}
     \end{align*}
     Substituting in the claim \ref{claim:lasso-claim-2}:
     \begin{align*}
-        \|\delta\|_{2, n}^{2}
+        \|\Vec{\delta}\|_{2, n}^{2}
         &\leq
         \lambda \left(
             1 + \dfrac{1}{c}
-        \right) \|\delta_T\|_{1}
+        \right) \|\Vec{\delta}_T\|_{1}
         \leq
         \lambda \left(
             1 + \dfrac{1}{c}
-        \right) \dfrac{\sqrt{S} \|\delta\|_{2,n}}{k_{\bar{c}}}\\
+        \right) \dfrac{\sqrt{S} \|\Vec{\delta}\|_{2,n}}{k_{\bar{c}}}\\
         %%%%%
-        \|\delta\|_{2, n}
+        \|\Vec{\delta}\|_{2, n}
         &\leq
         \left(1 + \dfrac{1}{c}\right)
         \dfrac{\lambda \sqrt{S}}{k_{\bar{c}}}
     \end{align*}
     Which is one of the inequalities of the theorem \ref{thm:main-lasso-result}. 
 
-    Knowing that $\delta = \delta_T + \delta_{T^\complement}$, and by the triangle inequality, $\|\delta\|_1 \leq \|\delta_T\|_1 + \|\delta_{T^\complement}\|_1$. Substituting in the claim \ref{claim:lasso-claim-1}:
+    Knowing that $\Vec{\delta} = \Vec{\delta}_T + \Vec{\delta}_{T^\complement}$, and by the triangle inequality, $\|\Vec{\delta}\|_1 \leq \|\Vec{\delta}_T\|_1 + \|\Vec{\delta}_{T^\complement}\|_1$. Substituting in the claim \ref{claim:lasso-claim-1}:
 
     \begin{align*}
-        \|\delta_T\|_1 + \|\delta_{T^\complement}\|_1
+        \|\Vec{\delta}_T\|_1 + \|\Vec{\delta}_{T^\complement}\|_1
         &\leq
-        \|\delta_T\|_1 + \bar{c} \|\delta_T\|_1\\
+        \|\Vec{\delta}_T\|_1 + \bar{c} \|\Vec{\delta}_T\|_1\\
     %%%%%
-        \|\delta_T\|_1 + \|\delta_{T^\complement}\|_1
+        \|\Vec{\delta}_T\|_1 + \|\Vec{\delta}_{T^\complement}\|_1
         &\leq
-        (1 + \bar{c}) \|\delta_T\|_1
+        (1 + \bar{c}) \|\Vec{\delta}_T\|_1
         \leq 
-        (1 + \bar{c}) \frac{\sqrt{S} \|\delta\|_{2, n}}{k_{\bar{c}}}
+        (1 + \bar{c}) \frac{\sqrt{S} \|\Vec{\delta}\|_{2, n}}{k_{\bar{c}}}
         \leq 
         (1 + \bar{c}) (1 + \frac{1}{c}) \frac{\lambda \sqrt{S}}{k_{\bar{c}}}\\
     %%%%%
-        \|\delta\|_1
+        \|\Vec{\delta}\|_1
         &\leq 
         (1 + \bar{c}) (1 + \frac{1}{c}) \frac{\lambda S}{k_{\bar{c}}}
     \end{align*}

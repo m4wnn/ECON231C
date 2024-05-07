@@ -4,16 +4,16 @@
 Recall the linear model:
 
 \begin{align*}
-Y = \Vec{X}'\beta + \varepsilon, 
-    \quad \E{\varepsilon|\Vec{X}} = 0
+Y = \Vec{X}'\Vec{\beta} + \epsilon, 
+    \quad \E{\epsilon|\Vec{X}} = 0
 \end{align*}
  
 Where:
 \begin{itemize}
 \item Vector of $p$ covariates: $\Vec{X} = (X_1, \cdots, X_j, \cdots , X_p)' \in \mathbb{R}^p$
 \item Dependent Variable: $Y \in \mathbb{R}$
-\item Vector of coefficients: $\beta = (\beta_1, \cdots, \beta_j, \cdots, \beta_p)' \in \mathbb{R}^p$
-\item Error term: $\varepsilon \in \mathbb{R}$
+\item Vector of coefficients: $\Vec{\beta} = (\beta_1, \cdots, \beta_j, \cdots, \beta_p)' \in \mathbb{R}^p$
+\item Error term: $\epsilon \in \mathbb{R}$
 \end{itemize}
 
 and a random sample $(\Vec{X}_1, Y_1), \cdots, (\Vec{X}_n, Y_n) \overset{iid}{\sim} (\Vec{X}, Y)$, where $\Vec{X}_i \in \mathbb{R}^p$ and $Y_i \in \mathbb{R}$.
@@ -21,15 +21,15 @@ and a random sample $(\Vec{X}_1, Y_1), \cdots, (\Vec{X}_n, Y_n) \overset{iid}{\s
 The linear regression (incorporating the random sample) is denoted as:
 
 \begin{align*}
-Y_i = \Vec{X}_i'\beta + \varepsilon_i, 
-    \quad \E{\varepsilon_i|\Vec{X}_i} = 0, \quad \forall i = 1, \cdots, n
+Y_i = \Vec{X}_i'\Vec{\beta} + \epsilon_i, 
+    \quad \E{\epsilon_i|\Vec{X}_i} = 0, \quad \forall i = 1, \cdots, n
 \end{align*}
 
 We can express the same regression in matrix form:
 
 \begin{align*}
-\Vec{Y} = \Mat{X}'\beta + \epsilon, 
-    \quad \E{\epsilon|\Mat{X}} = 0
+\Vec{Y} = \Mat{X}'\Vec{\beta} + \Vec{\epsilon}, 
+    \quad \E{\Vec{\epsilon}|\Mat{X}} = 0
 \end{align*}
 
 Where:
@@ -57,8 +57,8 @@ Where:
         \right] = (\Vec{X}_1, \cdots, \Vec{X}_i, \cdots, \Vec{X}_n)' \in \mathbb{R}^{n \times p}\\
         \Mat{X} &= (\Vec{X}_{(1)}, \cdots, \Vec{X}_{(j)}, \cdots, \Vec{X}_{(p)}) \in \mathbb{R}^{n \times p}\\
     \end{align*}
-\item Vector of coefficients: $\beta = (\beta_1, \cdots, \beta_j, \cdots, \beta_p)' \in \mathbb{R}^p$
-\item Error Vector: $\epsilon = (\varepsilon_1, \cdots, \varepsilon_i, \cdots, \varepsilon_n)' \in \mathbb{R}^n$
+\item Vector of coefficients: $\Vec{\beta} = (\beta_1, \cdots, \beta_j, \cdots, \beta_p)' \in \mathbb{R}^p$
+\item Error Vector: $\Vec{\epsilon} = (\epsilon_1, \cdots, \epsilon_i, \cdots, \epsilon_n)' \in \mathbb{R}^n$
 \end{itemize}
 
 Potentially, $p \sim n$, $p > n$ or $p >> n$.
@@ -66,61 +66,61 @@ Potentially, $p \sim n$, $p > n$ or $p >> n$.
 
 The estimated linear regression is:
 \begin{align*}
-\widehat{\Vec{Y}} = \Mat{X}'\hat{\beta}
+\widehat{\Vec{Y}} = \Mat{X}'\hat{\Vec{\beta}}
 \end{align*}
 
 Where, for \emph{OLS}, the vector estimator of coefficients is given by:
 
 \begin{align*}
-\hat{\beta} = (\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{Y}
+\hat{\Vec{\beta}} = (\Mat{X}'\Mat{X})^{-1}\Mat{X}'\Vec{Y}
 \end{align*}
 
 The error of estimation is given by:
 
 \begin{align*}
 \Vec{e} &= \E{\Vec{Y}|\Mat{X}} - \widehat{\Vec{Y}}\\
-&= \Mat{X}'\beta - \Mat{X}'\hat{\beta}\\
-&= \Mat{X}'(\beta - \hat{\beta}) \\
-&= \Mat{X}'\delta
+&= \Mat{X}'\Vec{\beta} - \Mat{X}'\hat{\Vec{\beta}}\\
+&= \Mat{X}'(\Vec{\beta} - \hat{\Vec{\beta}}) \\
+&= \Mat{X}'\Vec{\delta}
 \end{align*}
 
 which is often used to calculate the prediction norm:
 
 \begin{align*}
-\|\beta - \hat{\beta}\|_{2,n} 
-    = \|\delta\|_{2,n} 
-    = \sqrt{\frac{1}{n} \delta'\Mat{X}\Mat{X}'\delta} 
-    = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (\Vec{X}_i'\delta)^2}
+\|\Vec{\beta} - \hat{\Vec{\beta}}\|_{2,n} 
+    = \|\Vec{\delta}\|_{2,n} 
+    = \sqrt{\frac{1}{n} \Vec{\delta}'\Mat{X}\Mat{X}'\Vec{\delta}} 
+    = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (\Vec{X}_i'\Vec{\delta})^2}
     = \sqrt{\frac{1}{n} \Vec{e}'\Vec{e}}
-    = \rmse{\Mat{X}\hat{\beta}}
+    = \rmse{\Mat{X}\hat{\Vec{\beta}}}
 \end{align*}
 
 \begin{Def}
-Given a vector of  coefficients $\beta \in \mathbb{R}^p$, the sets $T$ and $T^{\complement}$ are defined as:
+Given a vector of  coefficients $\Vec{\beta} \in \mathbb{R}^p$, the sets $T$ and $T^{\complement}$ are defined as:
 
 \begin{align*}
 T &= \lbrace
-j \in \{1, \cdots, p \} : \beta_j \neq 0, \forall 
+j \in \{1, \cdots, p \} : \Vec{\beta}_j \neq 0, \forall 
 \rbrace  \\
 T^{\complement} &= \{1, 2, \cdots, p\} \setminus T
 \end{align*}
 
-where $T$ denotes the set of indices of the non-zero coefficients in $\beta$, and $T^{\complement}$ is the set of indices of the zero coefficients.
+where $T$ denotes the set of indices of the non-zero coefficients in $\Vec{\beta}$, and $T^{\complement}$ is the set of indices of the zero coefficients.
 
 the cardinality of $T$ is $S = |T|$ and the cardinality of $T^{\complement}$ is $|T^{\complement}| = p - S$, where $S$ is the \emph{Sparsity Index}. By definition, $|T \cup T^{\complement}| = p$.
 \end{Def}
 
 \begin{Def}
-Being $T$ and $T^{\complement}$ the sets of indices of the non-zero and zero coefficients in $\beta$, respectively, and a vector $\Vec{v} \in \mathbb{R}^p$, 
+Being $T$ and $T^{\complement}$ the sets of indices of the non-zero and zero coefficients in $\Vec{\beta}$, respectively, and a vector $\Vec{v} \in \mathbb{R}^p$, 
 
 \begin{align*}
     \Vec{v}_T &= \begin{cases}
-        \Vec{v}_j, &  j \in T \\
+        v_j, &  j \in T \\
         0, &  j \notin T
     \end{cases}\\
     %%%
     \Vec{v}_{T^{\complement}} &= \begin{cases}
-        \Vec{v}_j, &  j \in T^{\complement}\\
+        v_j, &  j \in T^{\complement}\\
         0, &  j \notin T^{\complement}
     \end{cases}\\
 \end{align*}
@@ -138,17 +138,17 @@ By definition:
 $\forall c > 0$,
 
 \begin{align*}
-k_c &= \inf_{\delta \in \mathbb{R}^p}{
-    \dfrac{\sqrt{S} \|\delta\|_{2, n}}{\|\delta\|_1}
+k_c &= \inf_{\Vec{\delta} \in \mathbb{R}^p}{
+    \dfrac{\sqrt{S} \|\Vec{\delta}\|_{2, n}}{\|\Vec{\delta}\|_1}
 }\\
 &\text{s.t.}\\
-&\|\delta_{T^{\complement}}\|_1 \leq c \|\delta_T\|_1
+&\|\Vec{\delta}_{T^{\complement}}\|_1 \leq c \|\Vec{\delta}_T\|_1
 \end{align*}
 
-where $\delta = \hat{\beta} - \beta$ is the diference between the estimated and true coefficients, and $\|\delta\|_{2, n} = \sqrt{\frac{1}{n} \delta'\Mat{X}\Mat{X}\delta}$ where $\Mat{X} = (\Vec{X}_1, \cdots, \Vec{X}_n)'$ is the design matrix.
+where $\Vec{\delta} = \hat{\Vec{\beta}} - \Vec{\beta}$ is the diference between the estimated and true coefficients, and $\|\Vec{\delta}\|_{2, n} = \sqrt{\frac{1}{n} \Vec{\delta}'\Mat{X}\Mat{X}\Vec{\delta}}$ where $\Mat{X} = (\Vec{X}_1, \cdots, \Vec{X}_n)'$ is the design matrix.
 
 The restriction set is often denoted as:
-$\mathcal{R}_{c} = \{\delta \in \mathbb{R}^p: \|\delta_{T^\complement}\| \leq c \|\delta_T\|_1\|\}$
+$\mathcal{R}_{c} = \{\Vec{\delta} \in \mathbb{R}^p: \|\Vec{\delta}_{T^\complement}\| \leq c \|\Vec{\delta}_T\|_1\|\}$
 \end{Def}
 
 
@@ -156,14 +156,14 @@ $\mathcal{R}_{c} = \{\delta \in \mathbb{R}^p: \|\delta_{T^\complement}\| \leq c 
 $\forall \bar{c} > 0$,
 
 \begin{align*}
-k_{\bar{c}} &= \inf_{\delta \in \mathbb{R}^p}{
-    \dfrac{\sqrt{S} \|\delta\|_{2, n}}{\|\delta\|_1}
+k_{\bar{c}} &= \inf_{\Vec{\delta} \in \mathbb{R}^p}{
+    \dfrac{\sqrt{S} \|\Vec{\delta}\|_{2, n}}{\|\Vec{\delta}\|_1}
 }\\
 &\text{s.t.}\\
-&\|\delta_{T^{\complement}}\|_1 \leq \bar{c} \|\delta_T\|_1
+&\|\Vec{\delta}_{T^{\complement}}\|_1 \leq \bar{c} \|\Vec{\delta}_T\|_1
 \end{align*}
 
-where $\delta = \hat{\beta} - \beta$ is the diference between the estimated and true coefficients, and $\|\delta\|_{2, n} = \sqrt{\frac{1}{n} \delta'\Mat{X}\Mat{X}\delta}$ where $\Mat{X} = (\Vec{X}_1, \cdots, \Vec{X}_n)'$ is the design matrix.
+where $\Vec{\delta} = \hat{\Vec{\beta}} - \Vec{\beta}$ is the diference between the estimated and true coefficients, and $\|\Vec{\delta}\|_{2, n} = \sqrt{\frac{1}{n} \Vec{\delta}'\Mat{X}\Mat{X}\Vec{\delta}}$ where $\Mat{X} = (\Vec{X}_1, \cdots, \Vec{X}_n)'$ is the design matrix.
 
-The restriction set is often denoted as $\mathcal{R}_{\bar{c}} = \{\delta \in \mathbb{R}^p: \|\delta_{T^\complement}\| \leq \bar{c} \|\delta_T\|_1\|\}$, and $\bar{c} = \dfrac{c+1}{c-1}$.
+The restriction set is often denoted as $\mathcal{R}_{\bar{c}} = \{\Vec{\delta} \in \mathbb{R}^p: \|\Vec{\delta}_{T^\complement}\| \leq \bar{c} \|\Vec{\delta}_T\|_1\|\}$, and $\bar{c} = \dfrac{c+1}{c-1}$.
 \end{Def}

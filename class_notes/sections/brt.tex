@@ -1,0 +1,263 @@
+\section{Bickel-Ritov-Tsybakov (BRT) Method}
+
+Probabilistic method to select $\lambda$ in Lasso, in order to obtain oracle properties for the Lasso estimator, bounding the difference between the prediction errors of the estimators and the best sparse approximation of the regression function (by an oracle that knows the truth, but is constrained by sparsity).
+
+Recall the linear regression model:
+
+\begin{align*}
+  Y = \Vec{X}'\Vec{\beta} + \epsilon, \qquad \E{\epsilon | \Vec{X}} = 0
+\end{align*}
+
+We are going to assume also that $\epsilon | \Vec{X} \sim \mathcal{N}(0, \sigma^2)$.
+
+Under sparsity conditions and $p \gg n$, the penalty term $\lambda^{BRT}$, defined as:
+
+\begin{align*}
+  \lambda^{BRT} = {
+    \dfrac{2c\sigma}{\sqrt{n}}
+    \Phi^{-1}\left(1 - \dfrac{\alpha}{2p}\right)
+    \max_{1 \leq j \leq p} \sqrt{
+        \dfrac{1}{n} \sum_{i=1}^n X_{ij}^2
+    }
+  }
+\end{align*}
+
+when $c = 1.1$ and $\alpha = 0.05$, has oracle properties for the Lasso estimator, with a probability of $1 - \alpha$.
+
+Recall from the main Lasso result, $\forall c > 1$:
+
+\begin{align*}
+\lambda  \geq \dfrac{2c}{n} \max_{1 \leq j \leq p} \left| \sum_{i=1}^{n} X_{i,j} \epsilon_{i} \right|
+\end{align*}
+
+or equivalently:
+    
+\begin{align*}
+\lambda  &\geq \dfrac{2c}{n} \max_{1 \leq j \leq p} \left| \Vec{X}_{(j)}' \Vec{\epsilon} \right|\\
+%%%%%
+\lambda  &\geq \dfrac{2c}{n} \| \Vec{\epsilon}'\Mat{X}\|_{\infty}
+\end{align*}
+
+the goal is to select a $\lambda$ that is greater that the right-hand side of the inequality with high probability.
+
+\begin{lemma}
+\begin{align*}
+\prob{
+    \lambda^{BRT} 
+    \geq
+    \dfrac{2c}{n} \| \Vec{\epsilon}'\Mat{X}\|_{\infty}
+} 
+\geq 
+1 - \alpha
+\end{align*}
+\end{lemma}
+
+\begin{proof}
+\begin{align*}
+\prob{
+    \dfrac{2c}{n} \| \Vec{\epsilon}'\Mat{X}\|_{\infty}
+    >
+    \lambda^{BRT} 
+} 
+\leq
+\alpha
+\end{align*}
+
+Substituting the definition of $\lambda^{BRT}$ in the inequality:
+
+\begin{align*}
+\prob{
+    \dfrac{2c}{n} \| \Vec{\epsilon}'\Mat{X}\|_{\infty}
+    >
+    {
+        \dfrac{2c\sigma}{\sqrt{n}}
+        \Phi^{-1}\left(1 - \dfrac{\alpha}{2p}\right)
+        \max_{1 \leq j \leq p} \sqrt{
+            \dfrac{1}{n} \sum_{i=1}^n X_{i,j}^2
+        }
+    }
+}
+\\
+= \prob{
+    \dfrac{1}{\sigma\sqrt{n}} \| \Vec{\epsilon}'\Mat{X}\|_{\infty}
+    >
+    {
+        \Phi^{-1}\left(1 - \dfrac{\alpha}{2p}\right)
+        \max_{1 \leq j \leq p} \sqrt{
+            \dfrac{1}{n} \sum_{i=1}^n X_{i,j}^2
+        }
+    }
+}
+\end{align*}
+
+By the \emph{Maximal Inequality}:
+
+\begin{align*}
+&\quad \prob{
+    \dfrac{1}{\sigma\sqrt{n}} \| \Vec{\epsilon}'\Mat{X}\|_{\infty}
+    >
+    {
+        \Phi^{-1}\left(1 - \dfrac{\alpha}{2p}\right)
+        \max_{1 \leq j \leq p} \sqrt{
+            \dfrac{1}{n} \sum_{i=1}^n X_{i,j}^2
+        }
+    }
+} \\
+%%%%%-----%%%%%-----%%%%%
+&\leq \sum_{j=1}^{p} \prob{
+    \left| \frac{1}{\sqrt{n}} \sum_{i=1}^{n} X_{i,j} \dfrac{\epsilon_{i}}{\sigma}\right| 
+    >
+    {
+        \Phi^{-1}\left(1 - \dfrac{\alpha}{2p}\right)
+        \max_{1 \leq j \leq p} \sqrt{
+            \dfrac{1}{n} \sum_{i=1}^n X_{i,j}^2
+        }
+    }
+} \\
+%%%%%-----%%%%%-----%%%%%
+&\leq \sum_{j=1}^{p} \prob{
+    \left| \frac{1}{\sqrt{n}} \sum_{i=1}^{n} X_{i,j} \dfrac{\epsilon_{i}}{\sigma}\right| 
+    >
+    {
+        \Phi^{-1}\left(1 - \dfrac{\alpha}{2p}\right)
+        \sqrt{
+            \dfrac{1}{n} \sum_{i=1}^n X_{i,j}^2
+        }
+    }
+} \\
+\end{align*}
+
+We notice that:
+
+\begin{align*}
+\frac{1}{\sqrt{n}} \sum_{i=1}^{n} X_{i,j} \dfrac{\epsilon_{i}}{\sigma} 
+\sim
+\mathcal{N} \left(
+    0,
+    \dfrac{1}{n} \sum_{i=1}^n X_{i,j}^2
+\right)
+\end{align*}
+
+This means that we can implement a change of variable, 
+
+\begin{align*}
+&\quad \sum_{j=1}^{p} \prob{
+    \left| \frac{1}{\sqrt{n}} \sum_{i=1}^{n} X_{i,j} \dfrac{\epsilon_{i}}{\sigma}\right| 
+    >
+    {
+        \Phi^{-1}\left(1 - \dfrac{\alpha}{2p}\right)
+        \sqrt{
+            \dfrac{1}{n} \sum_{i=1}^n X_{i,j}^2
+        }
+    }
+} \\
+&= \sum_{j=1}^{p} \prob{
+    \left|Z_j \sim \mathcal{N}(0, 1)\right| 
+    >
+    \Phi^{-1}\left(1 - \dfrac{\alpha}{2p}\right)
+} \\
+&= \sum_{j=1}^{p} \frac{2\alpha}{2p} = \frac{\alpha p}{p} = \alpha
+\\
+\end{align*}
+
+Therefore, if we select $\lambda^{BRT}$ as the penalty term in the Lasso estimator, we can guarantee that the Lasso estimator has oracle properties with a probability of $1 - \alpha$, or:
+
+\begin{align*}
+\prob{
+    \lambda^{BRT} 
+    \leq
+    \dfrac{2c}{n} \| \Vec{\epsilon}'\Mat{X}\|_{\infty}
+} 
+\leq
+1 - \alpha
+\end{align*}
+\end{proof}
+
+How big is $\lambda$?
+
+We have te following results:
+
+\begin{align*}
+    \|\hat{\Vec{\beta}} - \Vec{\beta}\|_1 &\leq C\lambda S \\
+    \|\hat{\Vec{\beta}} - \Vec{\beta}\|_{2, n} &\leq C\lambda \sqrt{S} \\
+    \|\hat{\Vec{\beta}} - \Vec{\beta}\|_{2} &\leq C\lambda \sqrt{S} \\
+\end{align*}
+
+Also, we asume that $|X_{i,j}| \leq C$, for simplicity. then:
+
+\begin{align*}
+    \max_{1 \leq j \leq p} \left|\sqrt{ \frac{1}{n} \sum_{i=1}^{n} X_{i,j}^2 }\right| &\leq C\\
+    \frac{1}{n} \|\diag{\Mat{X}'\Mat{X}}\|_{\infty} &\leq C^2\\
+\end{align*}
+
+How is this related to the BRT method? In order to analyze it, the following inequality is useful:
+
+\begin{claim}
+\label{claim:brt-phi-inequality}
+For all $c > 0$,
+\begin{align*}
+    1 - \Phi(c) &\leq e^{- \frac{c^2}{2}}, \quad \text{or}\\
+    \prob{Z > c} &\leq e^{- \frac{c^2}{2}}, \quad Z \sim \mathcal{N}(0, 1)
+\end{align*}
+\end{claim}
+
+The claim can be proved as follows:
+
+\begin{proof}
+\begin{align*}
+    1 - \Phi(c) &= \int_{c}^{\infty} \dfrac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} dx\\
+    &\leq \int_{c}^{\infty} \dfrac{x}{c\sqrt{2\pi}} e^{-\frac{x^2}{2}} dx\\
+\end{align*}
+
+This is true because $c \leq x, \forall x \in [c, \infty)$.
+
+\begin{align*}
+\int_{c}^{\infty} \dfrac{x}{c\sqrt{2\pi}} e^{-\frac{x^2}{2}} dx
+&=
+\dfrac{1}{c\sqrt{2\pi}} \int_{\frac{c^2}{2}}^{\infty} e^{-u} du\\
+&= -\dfrac{1}{c\sqrt{2\pi}} \left(e^{-\infty} - e^{-\frac{c^2}{2}}\right)\\
+&= \dfrac{1}{c\sqrt{2 \pi}} e^{\frac{c^2}{2}}
+\leq \dfrac{1}{\sqrt{2 \pi}} e^{-\frac{c^2}{2}}
+\leq  e^{-\frac{c^2}{2}}
+\end{align*}
+\end{proof}
+
+\begin{lemma}
+\label{lemma:brt-size-inequality}
+\begin{align*}
+    \Phi^{-1}(1 - \frac{\alpha}{2p}) \leq \sqrt{2 \ln{\dfrac{2p}{\alpha}}}
+\end{align*}
+\end{lemma}
+
+\begin{proof}
+We plug-in in the claim \ref{claim:brt-phi-inequality} by setting $c = \sqrt{2 \ln \frac{2p}{\alpha}}$:
+
+\begin{align*}
+    \exp \left(-\dfrac{2 \ln \frac{2p}{\alpha}}{2}\right)
+    = 
+    \exp \left(- \ln \frac{2p}{\alpha}\right)
+    = 
+    \exp \left(\ln \frac{\alpha}{2p}\right)
+    =
+    \dfrac{\alpha}{2p}
+\end{align*}
+
+Rearranging the inequality:
+
+\begin{align*}
+    \Phi(c) &\geq 1 - \dfrac{\alpha}{2p}\\
+    c &\geq \Phi^{-1}\left(1 - \dfrac{\alpha}{2p}\right)\\
+\end{align*}
+\end{proof}
+
+Summarizing:
+
+If $\lambda = \lambda^{BRT}$, then, with probability at least $1 - \alpha$:
+
+\begin{align*}
+\|\hat{\Vec{\beta}} - \Vec{\beta}\|_1 &\leq \dfrac{C \sqrt{2 \ln \frac{2p}{\alpha}}}{\sqrt{n}} \\ 
+\|\hat{\Vec{\beta}} - \Vec{\beta}\|_{2,n} &\leq \dfrac{C \sqrt{2 S \ln \frac{2p}{\alpha}}}{\sqrt{n}} \\ 
+\|\hat{\Vec{\beta}} - \Vec{\beta}\|_{2} &\leq \dfrac{C \sqrt{2 S \ln \frac{2p}{\alpha}}}{\sqrt{n}} \\ 
+\end{align*}
+
+The problem with the BRT method is that requiere the knowledge of $\sigma$, with normal homoscedastic errors. 

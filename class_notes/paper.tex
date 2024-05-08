@@ -40,14 +40,9 @@
 \usepackage{bbold}
 
 % Bibliography management.
-\usepackage[
-  sorting=none,
-  minbibnames=8,
-  maxbibnames=9,
-  block=space,
-  backend=biber
-]{biblatex}
-\bibliography{bibliography}
+% for the bibliography
+\usepackage[authordate, backend=biber, natbib=true]{biblatex-chicago}
+\addbibresource{bibliography.bib} % Link to your bibliography file
 
 % lorem ipsum generator.
 \usepackage{lipsum}
@@ -71,6 +66,7 @@
 \renewcommand{\Vec}[1]{\boldsymbol{#1}}
 \newcommand{\Mat}[1]{\mathbbm{#1}}
 \newcommand{\tr}[1]{\text{tr}\left(#1\right)}
+\newcommand{\diag}[1]{\text{diag}\left(#1\right)}
 
 
 %%%%% Color definitions %%%%%
@@ -137,6 +133,8 @@
 \input{sections/high-dim-reg.tex}
 \input{sections/sparsity.tex}
 \input{sections/main-lasso-result.tex}
+\input{sections/sparse-eigen.tex}
+\input{sections/brt.tex}
 
 \newpage
 \appendix
@@ -144,4 +142,14 @@
 \input{appendix/norm.tex}
 \input{appendix/notation-help-lasso.tex}
 \input{appendix/spectral-theory.tex}
+
+%\newpage
+%=============================
+%\section*{References}
+% the \nocite command leads to the whole bibliography
+% being displayed (without any \cite commands necessary).
+% remove this command in order to get the "normal" behavior.
+%\nocite{*}
+%\newpage
+%\printbibliography[heading=none]
 \end{document}

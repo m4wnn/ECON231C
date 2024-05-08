@@ -1,0 +1,103 @@
+\subsection{Sparse Eigenvalues}
+
+Recall the linear regression model:
+
+\begin{align*}
+  Y = \Vec{X}'\Vec{\beta} + \epsilon, \qquad \E{\epsilon | \Vec{X}} = 0
+\end{align*}
+
+and a random sample $(\Vec{X}_i, Y_1), \cdots, (\Vec{X}_n, Y_n) \overset{i.i.d.}{\sim} (\Vec{X}, Y)$, where $\Vec{X} \in \mathbb{R}^p$ and $\Vec{\beta} \in \mathbb{R}$.
+
+In matrix form\footnote{See appendix \ref{sec:notation-help-lasso} for notation.}, we can write the model as:
+
+\begin{align*}
+  \Vec{Y} = \Mat{X}\Vec{\beta} + \Vec{\epsilon}
+\end{align*}
+
+\begin{lemma}
+    All eigenvalues of the matrix $\frac{1}{n}\sum_{i=1}^n \Vec{X}_i\Vec{X}_i'$ are non-negative.
+\end{lemma}
+
+Notice that:
+
+\[
+    \frac{1}{n}\Mat{X}'\Mat{X} = \frac{1}{n}\sum_{i=1}^n \Vec{X}_i\Vec{X}_i'
+\]
+
+We can prove this lemma by applying the spectral theorem\footnote{See appendix \ref{sec:spectral-theory} for definitions.} to the matrix $\frac{1}{n}\Mat{X}'\Mat{X}$.
+
+\begin{proof}
+    \begin{align*}
+    \lambda_1 = \min \frac{1}{n}\Vec{x}'\Mat{X}'\Mat{X}\Vec{x} \quad \text{s.t.} \quad \Vec{x}'\Vec{x} = 1
+    \end{align*}
+
+    Notice that the matrix $\Vec{x}'\Mat{X}'\Mat{X}\Vec{x}$ is a cuadratic form, therefore, 
+    
+    \begin{align*}
+        \Vec{x}'\Mat{X}'\Mat{X}\Vec{x} \geq 0 \implies \lambda_1 \geq 0
+    \end{align*}
+\end{proof}
+
+\subsubsection{S-Space Eigenvalues}
+
+In order to analyze the constant $c$ in the Lasso theory, we need to introduce the concept of S-Space eigenvalues, or sparse eigenvalues.
+
+\begin{align*}
+\lambda_{1,s} &= \min \Vec{x}'\Mat{A}\Vec{x} \\
+&\text{s.t.} \\
+\Vec{x}'\Vec{x} &= 1 \\
+\|\Vec{x}\|_0 &\leq s
+\end{align*}
+
+and 
+
+\begin{align*}
+\lambda_{p,s} &= \max \Vec{x}'\Mat{A}\Vec{x} \\
+&\text{s.t.} \\
+\Vec{x}'\Vec{x} &= 1 \\
+\|\Vec{x}\|_0 &\leq s
+\end{align*}
+
+We recognize that $\lambda_{1,s} \geq \lambda_{1} > 0$ for all $s \geq 1$, because of the additional constraint $\|\Vec{x}\|_0 \leq s$.
+
+Recall that the matrix $\Mat{X}$ is degenerated when $p >n$, this means:
+
+\begin{align*}
+    \Mat{X} \Vec{a} = 0 \implies \Vec{a} = 0,\qquad \text{if } p > n
+\end{align*}
+
+\begin{lemma}
+    For all $c > 1$,
+
+\begin{align*}
+k_c \geq \max_{m \geq 0} {
+    \sqrt{\lambda_{1, m+s}}
+    \left(
+        1 - c \sqrt{\dfrac{s}{m+s}} \sqrt{\dfrac{\lambda_{p, m+s}}{\lambda_{1, m+s}}}
+    \right)
+}
+\end{align*}
+
+Where $\lambda_{1, m+s}$ is the $m+s$-sparse minimal eigenvalue of $\frac{1}{n}\Mat{X}'\Mat{X}$, and $\lambda_{p, m+s}$ is the $m+s$-sparse maximal eigenvalue of $\frac{1}{n}\Mat{X}'\Mat{X}$.
+\end{lemma}
+
+This lemma was proved by Belloni and Chernozhukov. The goals is to bound $k_c$ from below by zero, meaning that $\max_{m \geq 0} \{.\}$ is greater than zero too.
+
+If we plug-in $m = s \ln n -s$ and substitute in the original inequality, we get:
+
+\begin{align*}
+k_c {
+    \sqrt{\lambda_{1, s \ln n}}
+    \left(
+        1 - c \sqrt{\dfrac{s}{s \ln n}} \sqrt{\dfrac{\lambda_{p, s \ln n}}{\lambda_{1, s \ln n}}}
+    \right)
+} > 0 
+\end{align*}
+
+if for large enough $n$:
+
+\begin{align*}
+    \lambda_{1, s \ln n} > \underset{-}{c} \land \lambda_{p, s \ln n} > \bar{c}
+\end{align*}
+
+The term $s \ln n$ is arbitrary, with the goal of making the term $c \sqrt{\frac{s}{s+m}}$ goes to zero fast enough.
